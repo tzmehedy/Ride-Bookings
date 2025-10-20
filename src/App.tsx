@@ -5,13 +5,12 @@ import CommonLayout from './components/layouts/CommonLayout'
 
 function App() {
   return (
-    <>
-    <CommonLayout>
-      <Outlet></Outlet>
-    </CommonLayout>
-      
-    </>
-  )
+    <div >
+      <CommonLayout>
+        <Outlet></Outlet>
+      </CommonLayout>
+    </div>
+  );
 }
 
 export default App
