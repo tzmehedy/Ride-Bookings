@@ -1,13 +1,14 @@
 
+import { Outlet } from 'react-router'
 import './App.css'
-import { Button } from './components/ui/button'
+import CommonLayout from './components/layouts/CommonLayout'
 
 function App() {
-  
-
   return (
     <>
-    <Button>Click Me</Button>
+    <CommonLayout>
+      <Outlet></Outlet>
+    </CommonLayout>
       
     </>
   )
