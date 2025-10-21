@@ -1,5 +1,3 @@
-
-
 export default function Logo() {
   return (
     <svg
@@ -29,4 +27,3 @@ export default function Logo() {
     </svg>
   );
 }
-

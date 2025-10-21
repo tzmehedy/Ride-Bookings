@@ -7,7 +7,7 @@ import img4 from "../../../assets/images/4.png"
 export default function HowItWorks() {
     const [imageLink, setImageLink] = useState(img1)
   return (
-    <div className="container mx-auto mt-16 p-2 md:p-0">
+    <div className="container mx-auto mt-16 p-5 lg:p-0">
       <div>
         <h1 className="text-4xl font-bold text-center">
           How <span className="text-primary">Our Application</span> Work?
@@ -21,6 +21,10 @@ export default function HowItWorks() {
           <br />
           non numquam eius modi tempora incidunt ut labore et
         </p>
+      </div>
+
+      <div className="border-b-2 border-primary mt-5 opacity-60">
+
       </div>
 
       <div className="mt-20 flex flex-col md:flex-row gap-5">

@@ -1,5 +1,5 @@
 
-import Logo from "@/assets/icons/logo/Logo"
+
 import { Button } from "@/components/ui/button"
 import {
   NavigationMenu,
@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/popover"
 import { Link } from "react-router"
 import { ModeToggle } from "./ModeToggler"
+import Logo from "@/assets/icons/Logo/Logo"
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [

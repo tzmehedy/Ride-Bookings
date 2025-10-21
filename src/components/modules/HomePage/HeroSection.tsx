@@ -7,7 +7,7 @@ export default function HeroSection() {
   return (
     <div
       style={{ backgroundImage: `url(${heroBackgroundImg})` }}
-      className="m-5 md:m-0 rounded-xl bg-cover bg-no-repeat max-w-screen transition-all duration-300 bg-muted-foreground bg-blend-multiply"
+      className="m-5 lg:m-0 rounded-xl bg-cover bg-no-repeat max-w-screen transition-all duration-300 bg-muted-foreground bg-blend-multiply"
     >
       <div className="flex flex-col md:flex-row justify-center items-center p-5 m-5">
         <div className="">
