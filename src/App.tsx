@@ -5,11 +5,11 @@ import CommonLayout from './components/layouts/CommonLayout'
 
 function App() {
   return (
-    <div >
+    < >
       <CommonLayout>
         <Outlet></Outlet>
       </CommonLayout>
-    </div>
+    </>
   );
 }
 

@@ -5,15 +5,20 @@ import heroLeftImage from "../../../assets/images/HeroLeft.png"
 
 export default function HeroSection() {
   return (
-    <section
+    <div
       style={{ backgroundImage: `url(${heroBackgroundImg})` }}
-      className=" m-3 rounded-xl bg-cover bg-no-repeat max-w-screen transition-all duration-300 bg-muted-foreground bg-blend-multiply"
+      className="m-5 md:m-0 rounded-xl bg-cover bg-no-repeat max-w-screen transition-all duration-300 bg-muted-foreground bg-blend-multiply"
     >
       <div className="flex flex-col md:flex-row justify-center items-center p-5 m-5">
         <div className="">
-          <img className="w-[400px]" src={heroLeftImage} alt="" />
+          <img
+            className="w-[400px] transition-all ease-in -duration-300 animate-fade-in-up"
+            src={heroLeftImage}
+            alt=""
+          />
         </div>
-        <div className=" flex flex-col gap-5">
+
+        <div className=" flex flex-col gap-5 animate-fade-in-right">
           <h1 className="text-4xl font-bold text-foreground">
             Understand user flow and
             <strong className="text-primary"> increase </strong>
@@ -38,6 +43,6 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
