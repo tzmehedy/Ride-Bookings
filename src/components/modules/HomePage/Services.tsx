@@ -20,7 +20,7 @@ export default function Services() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-10 gap-10 p-5 lg:p-0">
-        <div className="bg-muted hover:bg-primary/80 shadow-2xl p-10 rounded-xl space-y-3 text-muted-foreground hover:text-background">
+        <div className="bg-muted hover:bg-primary/80 shadow-2xl p-10 rounded-xl space-y-3 text-muted-foreground hover:text-background transition-all duration-700">
           <div className="bg-primary/40 h-10 w-10 rounded-full flex items-center justify-center p-3">
             <RideSharingIcon />
           </div>
@@ -32,7 +32,7 @@ export default function Services() {
             </p>
           </div>
         </div>
-        <div className="bg-muted hover:bg-primary/80 shadow-2xl p-10 rounded-xl space-y-3 text-muted-foreground hover:text-background">
+        <div className="bg-muted hover:bg-primary/80 shadow-2xl p-10 rounded-xl space-y-3 text-muted-foreground hover:text-background transition-all duration-700">
           <div className="bg-primary/40 h-10 w-10 rounded-full flex items-center justify-center p-3">
             <Clock></Clock>
           </div>
@@ -44,7 +44,7 @@ export default function Services() {
             </p>
           </div>
         </div>
-        <div className="bg-muted hover:bg-primary/80 shadow-2xl p-10 rounded-xl space-y-3 text-muted-foreground hover:text-background">
+        <div className="bg-muted hover:bg-primary/80 shadow-2xl p-10 rounded-xl space-y-3 text-muted-foreground hover:text-background transition-all duration-700">
           <div className="bg-primary/40 h-10 w-10 rounded-full flex items-center justify-center p-3">
             <Calender></Calender>
           </div>
