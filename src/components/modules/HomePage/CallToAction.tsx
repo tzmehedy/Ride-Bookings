@@ -1,9 +1,11 @@
 
 import { Button } from "@/components/ui/button";
 import callToActionImage from "../../../assets/images/CallToActionImage.jpg"
+
 export default function CallToAction() {
+  
   return (
-    <section className="overflow-hidden bg-muted sm:grid sm:grid-cols-2 sm:items-center">
+    <section className="overflow-hidden bg-muted sm:grid sm:grid-cols-2 sm:items-center p-5 lg:p-0">
       <div className="p-8 md:p-12 lg:px-16 lg:py-24">
         <div className="mx-auto max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
           <h2 className="text-2xl font-bold text-muted-foreground md:text-3xl">
@@ -18,9 +20,7 @@ export default function CallToAction() {
           </p>
 
           <div className="mt-4 md:mt-8">
-            <Button
-              className="rounded-sm bg-primary/90 px-12 py-3 flex justify-center items-center  font-medium text-white transition hover:bg-primary focus:ring-3 focus:ring-yellow-400 focus:outline-hidden cursor-pointer"
-            >
+            <Button className="rounded-sm bg-primary/90 px-12 py-3 flex justify-center items-center  font-medium text-white transition hover:bg-primary focus:ring-3 focus:ring-yellow-400 focus:outline-hidden cursor-pointer">
               Get Started Today
             </Button>
           </div>
