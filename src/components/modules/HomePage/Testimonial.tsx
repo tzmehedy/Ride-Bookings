@@ -32,7 +32,7 @@ export default function Testimonial() {
             opts={{
               align: "start",
             }}
-            className="border border-primary/70 rounded-2xl"
+            className="border border-primary/70 rounded-2xl p-5"
           >
             <CarouselContent>
               <CarouselItem className="md:basis-1/2 lg:basis-1/3">
