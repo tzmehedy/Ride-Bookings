@@ -35,13 +35,13 @@ export default function OursStory() {
         </p>
         <div className="flex  gap-10 mt-5">
           <div>
-            <h1 className="text-4xl font-bold text-muted-foreground">
+            <h1 className="text-5xl font-bold text-muted-foreground">
               {experiencedTime} <span className="text-primary">+</span>
             </h1>
             <p className="text-muted-foreground/80">Years of Experience</p>
           </div>
           <div>
-            <h1 className="text-4xl font-bold text-muted-foreground">
+            <h1 className="text-5xl font-bold text-muted-foreground">
               {professionalDriverCount} <span className="text-primary">+</span>
             </h1>
             <p className="text-muted-foreground/80">Professional Drivers</p>
