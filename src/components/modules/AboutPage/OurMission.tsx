@@ -1,6 +1,7 @@
-import Compass from "@/assets/icons/ourMissionIcons/compass";
+
 import Flag from "@/assets/icons/ourMissionIcons/Flag";
 import missionImage from "../../../assets/images/missionImage2.jpg"
+import Compass from "@/assets/icons/ourMissionIcons/Compass";
 
 
 export default function OurMission() {

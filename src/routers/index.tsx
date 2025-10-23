@@ -1,5 +1,6 @@
 import App from "@/App";
 import AboutUs from "@/pages/AboutUsPage/AboutUs";
+import ContactUs from "@/pages/ContactUsPage/ContactUs";
 import Feature from "@/pages/FeaturePage/Feature";
 import Home from "@/pages/Homepage/Home";
 import { createBrowserRouter } from "react-router";
@@ -20,6 +21,10 @@ export const router = createBrowserRouter([
             {
                 Component: Feature,
                 path: "features"
+            },
+            {
+                Component: ContactUs,
+                path: "contact"
             }
         ]
     }
