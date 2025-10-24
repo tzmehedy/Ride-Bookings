@@ -5,15 +5,41 @@ import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router";
+import {z} from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 
+const loginFormSchema = z.object({
+  email: z.email(),
+  password: z
+    .string()
+    .regex(/^(?=.*[A-Z])/, {
+      message: "The password must have one upper case letter",
+    })
+    .regex(/^(?=.*\d)/, { message: "The password must have one number" })
+    .regex(/^(?=.*[!@#$%^&*,.?":{}|<>_\-+=~`[\]\\;/'])/, {
+      message: "The password must have a special character",
+    }),
+});
+
+
+const onSubmit = (values: z.infer<typeof loginFormSchema>) =>{
+  console.log(values)
+}
 
 export function LoginForm() {
-    const form = useForm()
+    const form = useForm<z.infer<typeof loginFormSchema>>(
+      {
+        resolver: zodResolver(loginFormSchema),
+        defaultValues: {
+          email: "",
+          password: ""
+        }
+      }
+    )
   return (
     <Form {...form}>
-      <form className="space-y-5">
-  
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
         <FormField
           control={form.control}
           name="email"
