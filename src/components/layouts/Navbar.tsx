@@ -103,9 +103,9 @@ export default function Navbar() {
         {/* Right side */}
         <div className="flex items-center gap-2">
           <ModeToggle/>
-          <Button asChild size="sm" className="text-sm">
-            <a href="#">Get Started</a>
-          </Button>
+          <Link to="/login" className="text-sm bg-primary px-3 py-2 text-background font-bold rounded-md">
+            Login
+          </Link>
         </div>
       </div>
     </header>
