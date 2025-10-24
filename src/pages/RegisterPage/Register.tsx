@@ -16,7 +16,7 @@ export default function Register({ className, ...props }: React.ComponentProps<"
       <div className=" flex min-h-svh flex-col items-center justify-center p-5 md:p-10 ">
         <div className="w-full max-w-sm md:max-w-4xl mt-3">
           <div className={cn("flex flex-col gap-6", className)} {...props}>
-            <Card className="overflow-hidden p-0 shadow-md shadow-primary/60 border-2 border-primary rounded-xl">
+            <Card className="overflow-hidden lg:p-5 shadow-md shadow-primary/60 border-2 border-primary rounded-xl">
               <CardContent className="grid md:grid-cols-2 p-0 gap-5">
                 <div className="p-5">
                   <div className="mb-5">
