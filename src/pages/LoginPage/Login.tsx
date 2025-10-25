@@ -12,23 +12,23 @@ export default function Login({
 }: React.ComponentProps<"div">) {
   return (
     <div className="bg-muted p-3">
-      <div className="flex gap-3 items-center top-3 left-3">
-        <Link to="/" className="">
-          <Logo></Logo>
-        </Link>
-      </div>
       <div className=" flex min-h-svh flex-col items-center justify-center p-5 ">
         <div className="w-full max-w-sm md:max-w-4xl mt-3">
           <div className={cn("flex flex-col gap-6", className)} {...props}>
             <Card className="overflow-hidden p-0 shadow-md shadow-primary/60 border-2 border-primary rounded-xl">
               <CardContent className="grid md:grid-cols-2 p-0 gap-5">
                 <div className="p-5">
-                  <div className="mb-5">
+                  <div className="m-3">
+                    <div className="flex gap-3 justify-center items-center  top-3 left-3">
+                      <Link to="/" className="flex">
+                        <Logo></Logo>
+                      </Link>
+                    </div>
                     <h1 className="text-primary text-xl font-bold text-center">
                       Welcome To Our Services
                     </h1>
                   </div>
-                  <div>
+                  <div className="bg-muted p-5 border border-primary rounded-lg  shadow-2xl">
                     <LoginForm />
                   </div>
                 </div>
