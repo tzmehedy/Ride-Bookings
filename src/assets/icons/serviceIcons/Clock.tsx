@@ -9,9 +9,6 @@ export default function Clock() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="#559601"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
       className="lucide lucide-clock6-icon lucide-clock-6"
     >
       <path d="M12 6v10" />

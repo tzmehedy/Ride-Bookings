@@ -9,9 +9,6 @@ export default function Calender() {
       viewBox="0 0 24 24"
       fill="none"
       stroke="#559601"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
       className="lucide lucide-calendar-days-icon lucide-calendar-days"
     >
       <path d="M8 2v4" />

@@ -15,6 +15,7 @@ import {
 import { Link } from "react-router"
 import { ModeToggle } from "./ModeToggler"
 import Logo from "@/assets/icons/Logo/Logo"
+import { useGetUserInfoQuery } from "@/redux/features/auth/auth.api"
 
 
 // Navigation links array to be used in both desktop and mobile menus
@@ -27,6 +28,9 @@ const navigationLinks = [
 ]
 
 export default function Navbar() {
+  const {data} = useGetUserInfoQuery(undefined)
+
+  console.log(data)
   return (
     <header className="container mx-auto border-b px-4 md:px-6">
       <div className="flex h-16 items-center justify-between gap-4">
@@ -91,7 +95,7 @@ export default function Navbar() {
               <NavigationMenuList className="gap-2">
                 {navigationLinks.map((link, index) => (
                   <NavigationMenuItem key={index}>
-                    <NavigationMenuLink className="py-1.5 font-medium text-muted-foreground hover:text-primary">
+                    <NavigationMenuLink asChild className="py-1.5 font-medium text-muted-foreground hover:text-primary">
                       <Link to={link.href}>{link.label}</Link>
                     </NavigationMenuLink>
                   </NavigationMenuItem>

@@ -4,11 +4,12 @@ import { Input } from "@/components/ui/input";
 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import {z} from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLoginMutation } from "@/redux/features/auth/auth.api";
 import { toast } from "sonner";
+import Password from "@/components/ui/Password";
 
 
 const loginFormSchema = z.object({
@@ -29,6 +30,7 @@ const loginFormSchema = z.object({
 
 export function LoginForm() {
   const [login] = useLoginMutation()
+  const navigate = useNavigate()
 
     const form = useForm<z.infer<typeof loginFormSchema>>(
       {
@@ -47,14 +49,17 @@ export function LoginForm() {
       }
 
       try {
-        const result = await login(userInfo)
-        if(result?.data.success){
-          toast.success(result?.data.message)
+        const result = await login(userInfo).unwrap()
+
+        if(result.success){
+          toast.success(result.message)
+          navigate("/")
         }
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (error: any) {
         
-      } catch (error) {
-        console.log(error)
+        toast.error(error.data.message)
         
       }
     };
@@ -81,7 +86,7 @@ export function LoginForm() {
             <FormItem>
               <FormLabel>Enter Your Password</FormLabel>
               <FormControl>
-                <Input placeholder="*******" {...field} />
+                <Password placeholder="*******" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
