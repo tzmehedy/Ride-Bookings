@@ -7,6 +7,8 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router";
 import {z} from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useLoginMutation } from "@/redux/features/auth/auth.api";
+import { toast } from "sonner";
 
 
 const loginFormSchema = z.object({
@@ -23,11 +25,11 @@ const loginFormSchema = z.object({
 });
 
 
-const onSubmit = (values: z.infer<typeof loginFormSchema>) =>{
-  console.log(values)
-}
+
 
 export function LoginForm() {
+  const [login] = useLoginMutation()
+
     const form = useForm<z.infer<typeof loginFormSchema>>(
       {
         resolver: zodResolver(loginFormSchema),
@@ -37,6 +39,25 @@ export function LoginForm() {
         }
       }
     )
+
+    const onSubmit = async(values: z.infer<typeof loginFormSchema>) => {
+      const userInfo = {
+        email: values.email,
+        password: values.password
+      }
+
+      try {
+        const result = await login(userInfo)
+        if(result?.data.success){
+          toast.success(result?.data.message)
+        }
+
+        
+      } catch (error) {
+        console.log(error)
+        
+      }
+    };
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
