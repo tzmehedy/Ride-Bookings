@@ -1,6 +1,11 @@
 
+
 export default function RideHistory() {
+  
+
   return (
-    <div>RideHistory</div>
+    <div>
+      <h3>Ride History</h3>
+    </div>
   )
 }

@@ -16,6 +16,9 @@ import { withAuth } from "@/utilis/withAuth";
 import { Role } from "@/constants/role";
 import type { TRole } from "@/types";
 import { driverSideBarRoutes } from "./driverSideBarRoutes";
+import RideRequest from "@/pages/RiderPage/RideRequest";
+
+
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +45,10 @@ export const router = createBrowserRouter([
         Component: Faq,
         path: "faq",
       },
+      {
+        Component: RideRequest,
+        path: "/ride-request",
+      },
     ],
   },
   {
@@ -52,7 +59,10 @@ export const router = createBrowserRouter([
   {
     Component: withAuth(DashboardLayout, Role.RIDER as TRole),
     path: "/rider",
-    children: [...generateRoutes(riderSideBarRoutes)],
+    children: [...generateRoutes(riderSideBarRoutes), {
+      Component: RideRequest,
+      path: "ride-request",
+    },],
   },
   {
     Component: withAuth(DashboardLayout, Role.DRIVER as TRole),
