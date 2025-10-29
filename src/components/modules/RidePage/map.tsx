@@ -5,6 +5,7 @@ import axios from "axios";
 import config from "@/config";
 
 import { Button } from "@/components/ui/button";
+import { getDistanceFromLatLonInKm } from "@/utilis/getDistanceFromLongLat";
 
 
 interface Location {
@@ -97,6 +98,9 @@ export const Map: React.FC = () => {
         const destination = form.destination.value
         console.log(pickup, destination)
         console.log(start, end)
+
+        const distance = getDistanceFromLatLonInKm(start?.lat as number, start?.lon as number, end?.lat as number, end?.lon as number).toFixed(2)
+        console.log(distance)
     }
 
     return (
