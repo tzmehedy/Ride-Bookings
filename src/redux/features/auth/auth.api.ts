@@ -1,9 +1,9 @@
 import { baseApi } from "@/redux/baseApi";
 
 export const authApi = baseApi.injectEndpoints({
-    endpoints: (builder) =>({
-        register : builder.mutation({
-            query: (userInfo) =>({
+    endpoints: (builder) => ({
+        register: builder.mutation({
+            query: (userInfo) => ({
                 url: "/user/register",
                 method: "POST",
                 data: userInfo
@@ -15,11 +15,12 @@ export const authApi = baseApi.injectEndpoints({
                 url: "/auth/login",
                 method: "POST",
                 data: loginInfo
-            }) 
+            })
+
         }),
 
         logout: builder.mutation({
-            query: () =>({
+            query: () => ({
                 url: "/auth/logout",
                 method: "POST",
             }),
@@ -27,7 +28,7 @@ export const authApi = baseApi.injectEndpoints({
         }),
 
         getUserInfo: builder.query({
-            query: () =>({
+            query: () => ({
                 url: "/user/me",
                 method: "GET"
             }),
@@ -38,4 +39,4 @@ export const authApi = baseApi.injectEndpoints({
     })
 })
 
-export const {useRegisterMutation, useLoginMutation, useGetUserInfoQuery, useLogoutMutation} = authApi
+export const { useRegisterMutation, useLoginMutation, useGetUserInfoQuery, useLogoutMutation } = authApi

@@ -99,7 +99,7 @@ export function RegisterForm() {
       error.data.errorSources.map((err: any) =>
         toast.error(err.message)
       );
-      console.log(error.data.errorSources)
+     
       
       
     }

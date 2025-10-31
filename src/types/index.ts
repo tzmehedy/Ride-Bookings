@@ -1,4 +1,5 @@
 import type { ComponentType } from "react"
+export type { IRide } from "./rides.type.ts"
 
 export interface ISidebarItems{
     title: string,
@@ -10,3 +11,10 @@ export interface ISidebarItems{
 }
 
 export type TRole = "ADMIN" | "DRIVER" |"RIDER" 
+
+export interface IResponse<T>{
+    success: boolean,
+    message: string,
+    statusCode: number,
+    data?:T
+}
