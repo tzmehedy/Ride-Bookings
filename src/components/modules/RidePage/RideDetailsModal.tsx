@@ -35,53 +35,51 @@ export default function RideDetailsModal({ open, setOpen, rideData, defaultValue
           <div className="overflow-y-auto">
             <DialogDescription asChild>
               <div className="px-6 py-4">
-                <div className="space-y-4 [&_strong]:font-semibold [&_strong]:text-foreground">
-                  <div className="space-y-1">
-                    <RideStatusTimeline defaultValueIndex={defaultValueIndex}/>
+                <div className="space-y-1">
+                  <RideStatusTimeline defaultValueIndex={defaultValueIndex} />
+                </div>
+                <div className="space-y-4 [&_strong]:font-semibold [&_strong]:text-foreground flex justify-between items-center gap-4 p-5 mt-3">
+                  <div>
+                    
+                    <div className="space-y-1">
+                      <p>
+                        <strong>Pick Up Point</strong>
+                      </p>
+                      <p>
+                        {rideData?.pickup_address}
+                      </p>
+                    </div>
+                    <div className="space-y-1">
+                      <p>
+                        <strong>Destination</strong>
+                      </p>
+                      <p>
+                        {rideData?.destination_address}
+                      </p>
+                    </div>
+                    <div className="space-y-1">
+                      <p>
+                        <strong>Total Distance</strong>
+                      </p>
+                      <p>
+                        {rideData?.distance}
+                      </p>
+                    </div>
+                    <div className="space-y-1">
+                      <p>
+                        <strong>Price</strong>
+                      </p>
+                      <p>
+                        {rideData?.price}
+                      </p>
+                    </div>
                   </div>
-                  <div className="space-y-1">
-                    <p>
-                      <strong>Pick Up Point</strong>
-                    </p>
-                    <p>
-                      {rideData?.pickup_address}
-                    </p>
+
+                  <div>
+                    <p><strong>Driver Info</strong></p>
+                    <p>{rideData?.driver?.vehicle_Info ? "" : "No Driver Info Found"}</p>
                   </div>
-                  <div className="space-y-1">
-                    <p>
-                      <strong>Password Reset Process</strong>
-                    </p>
-                    <p>
-                      Users can reset their password through the account
-                      settings page. Click &quot;Forgot Password&quot; and
-                      follow the email verification steps to regain account
-                      access quickly and securely.
-                    </p>
-                  </div>
-                  <div className="space-y-1">
-                    <p>
-                      <strong>Service Pricing Tiers</strong>
-                    </p>
-                    <p>
-                      We offer three primary subscription levels designed to
-                      meet diverse user needs: Basic (free with limited
-                      features), Professional (monthly fee with comprehensive
-                      access), and Enterprise (custom pricing with full platform
-                      capabilities).
-                    </p>
-                  </div>
-                  <div className="space-y-1">
-                    <p>
-                      <strong>Technical Support Channels</strong>
-                    </p>
-                    <p>
-                      Customer support is accessible through multiple
-                      communication methods including email support, live chat
-                      during business hours, an integrated support ticket
-                      system, and phone support specifically for
-                      enterprise-level customers.
-                    </p>
-                  </div>
+
                   
                 </div>
               </div>
