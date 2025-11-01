@@ -1,6 +1,5 @@
 
-import MyRide from "@/pages/RiderPage/MyRide";
-import RideHistory from "@/pages/RiderPage/RideHistory";
+import MyRideHistory from "@/pages/RiderPage/MyRideHistory";
 import type { ISidebarItems } from "@/types";
 
 export const riderSideBarRoutes: ISidebarItems[] = [
@@ -8,14 +7,9 @@ export const riderSideBarRoutes: ISidebarItems[] = [
     title: "Dashboard",
     items: [
       {
-        title: "History",
+        title: "My Rides History",
         url: "/rider/ride-history",
-        component: RideHistory
-      },
-      {
-        title: "My Rides Info",
-        url: "/rider/rides-me",
-        component: MyRide
+        component: MyRideHistory
       }
     ],
   }

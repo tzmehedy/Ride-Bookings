@@ -24,7 +24,6 @@ interface IModeldata {
 }
 
 
-
 export const Map: React.FC = () => {
     const [map, setMap] = useState<LeafletMap | null>(null);
     const [start, setStart] = useState<Location | null>(null);

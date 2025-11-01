@@ -1,6 +1,6 @@
 import { MyRideTable } from "@/components/modules/RidePage/MyRideTable";
 
-export default function MyRide() {
+export default function MyRideHistory() {
   return (
     <div className="space-y-10">
         <div className="text-center">

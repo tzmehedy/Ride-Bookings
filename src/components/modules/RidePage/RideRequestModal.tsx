@@ -54,7 +54,7 @@ export default function RideRequestModal({ open, setOpen, modalData }: RideReque
         toast.success("The Ride Request successfully requested", { id: toastId })
         setOpen(false)
         dispatch(ridesApi.util.resetApiState())
-        navigate("/rider/rides-me")
+        navigate("/rider/ride-history")
       }
       
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
