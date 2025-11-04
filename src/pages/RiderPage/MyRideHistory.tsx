@@ -1,4 +1,4 @@
-import { MyRideTable } from "@/components/modules/RidePage/MyRideTable";
+import { MyRideTable } from "@/components/modules/Dashboard/RidePage/MyRideTable";
 
 export default function MyRideHistory() {
   return (

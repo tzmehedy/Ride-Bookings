@@ -1,4 +1,4 @@
-import { Map } from "@/components/modules/RidePage/Map";
+import { Map } from "@/components/modules/Dashboard/RidePage/Map";
 
 
 
