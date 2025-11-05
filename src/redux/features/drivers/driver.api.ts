@@ -8,8 +8,15 @@ export const driversApi = baseApi.injectEndpoints({
                 method: "POST",
                 data: requestInfo
             })
+        }),
+
+        getDriverInfo: builder.query({
+            query: () => ({
+                url: "/drivers/me",
+                method: "GET"
+            })
         })
     })
 })
 
-export const {useRequestDriveMutation} = driversApi
+export const {useRequestDriveMutation, useGetDriverInfoQuery} = driversApi

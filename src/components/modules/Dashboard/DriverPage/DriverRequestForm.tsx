@@ -4,13 +4,14 @@ import { Input } from "@/components/ui/input";
 import { useRequestDriveMutation } from "@/redux/features/drivers/driver.api";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
 import { toast } from "sonner";
 import z from "zod";
 
 const driverRequestFormSchema = z.object({
-    brand_name: z.string(),
-    model: z.string(),
-    vehicle_number: z.string()
+    brand_name: z.string().min(1, "You should must fill up the brand name of your vehicle."),
+    model: z.string().min(1, "You should must fill up the model of your vehicle."),
+    vehicle_number: z.string().min(1, "You should must fill up the vehicle number of your vehicle.")
 
 })
 
@@ -18,7 +19,7 @@ const driverRequestFormSchema = z.object({
 export default function DriverRequestForm() {
 
     const [requestDrive, { isLoading}] = useRequestDriveMutation()
-    
+    const navigate = useNavigate()
 
 
 
@@ -40,21 +41,25 @@ export default function DriverRequestForm() {
             vehicle_number: value.vehicle_number
         }
 
+        const toastId = toast.loading("Processing...! Please wait")
+
         try {
            const result = await requestDrive({vehicle_info}).unwrap()
-            console.log(result)
+            
             if(result.success){
-                toast.success("You are successfully requested for drive. Please wait until the admin will not approve you.")
+                toast.success("You are successfully requested for drive. Please wait until the admin will not approve you.", { id: toastId })
+                navigate("/driver/application-status")
+                form.reset()
+
             }
             
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             console.log(error)
-            toast.error(error.data?.message)
+            toast.error(error.data?.message, { id: toastId })
             
         }
     }
-
 
 
 
