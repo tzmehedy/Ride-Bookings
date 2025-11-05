@@ -1,5 +1,5 @@
 
-import MyRideHistory from "@/pages/RiderPage/MyRideHistory";
+import MyRideHistory from "@/pages/Dashboard/RiderPage/MyRideHistory";
 import type { ISidebarItems } from "@/types";
 
 export const riderSideBarRoutes: ISidebarItems[] = [

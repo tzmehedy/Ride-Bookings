@@ -1,5 +1,6 @@
 import type { ComponentType } from "react"
 export type { IRide } from "./rides.type.ts"
+export type { IRequestedDrivers } from "./drivers.type.ts"
 
 export interface ISidebarItems{
     title: string,

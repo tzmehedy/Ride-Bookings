@@ -1,4 +1,6 @@
 import { baseApi } from "@/redux/baseApi";
+import type { IRequestedDrivers, IResponse } from "@/types";
+
 
 export const driversApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -17,8 +19,24 @@ export const driversApi = baseApi.injectEndpoints({
                 method: "GET"
             }),
             providesTags: ["Drivers"]
+        }),
+
+        approveDriver: builder.mutation({
+            query: ({id, status}) => ({
+                url: `/drivers/approve/${id}?status=${status}`,
+                method: "POST",
+            })
+        }),
+
+        requestedDrivers: builder.query<IResponse<IRequestedDrivers[]>, null>({
+            query: () => ({
+                url: "/drivers/requested-driver",
+                method: "GET"
+            })
         })
+
+        
     })
 })
 
-export const {useRequestDriveMutation, useGetDriverInfoQuery} = driversApi
+export const {useRequestDriveMutation,useApproveDriverMutation, useGetDriverInfoQuery, useRequestedDriversQuery} = driversApi

@@ -1,6 +1,6 @@
-import ApplicationStatus from "@/pages/DriverPage/ApplicationStatus";
-import DriverApplication from "@/pages/DriverPage/DriverApplication";
-import EarningHistory from "@/pages/DriverPage/EarningHistory";
+import ApplicationStatus from "@/pages/Dashboard/DriverPage/ApplicationStatus";
+import DriverApplication from "@/pages/Dashboard/DriverPage/DriverApplication";
+import EarningHistory from "@/pages/Dashboard/DriverPage/EarningHistory";
 import type { ISidebarItems } from "@/types";
 
 export const driverSideBarRoutes: ISidebarItems[] = [

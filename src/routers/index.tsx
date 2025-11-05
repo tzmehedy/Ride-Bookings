@@ -16,7 +16,7 @@ import { withAuth } from "@/utilis/withAuth";
 import { Role } from "@/constants/role";
 import type { TRole } from "@/types";
 import { driverSideBarRoutes } from "./driverSideBarRoutes";
-import RideRequest from "@/pages/RiderPage/RideRequest";
+import RideRequest from "@/pages/Dashboard/RiderPage/RideRequest";
 
 
 

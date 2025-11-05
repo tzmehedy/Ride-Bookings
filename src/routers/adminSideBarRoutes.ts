@@ -1,5 +1,6 @@
 import Analytics from "@/pages/AdminPages/Analytics";
 import ManageUser from "@/pages/AdminPages/ManageUser";
+import ApproveDriver from "@/pages/Dashboard/AdminPage/ApproveDriver";
 import type { ISidebarItems } from "@/types";
 
 export const adminSideBarRoutes: ISidebarItems[] = [
@@ -20,6 +21,11 @@ export const adminSideBarRoutes: ISidebarItems[] = [
         title: "Manage User",
         url: "/admin/manage-user",
         component: ManageUser
+      },
+      {
+        title: "Drivers Application",
+        url: "/admin/drivers-application",
+        component: ApproveDriver
       },
     ],
   },

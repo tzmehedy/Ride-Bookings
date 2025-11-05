@@ -7,7 +7,7 @@ export default function ApplicationStatus() {
       <div className="text-center">
         <h1 className="text-3xl font-bold text-primary underline">Your Application Status</h1>
       </div>
-      <div className="mt-10 p-5 md:p-10">
+      <div className="mt-10 p-2 md:p-10">
         <ApplicationStatusTable/>
       </div>
     </div>
