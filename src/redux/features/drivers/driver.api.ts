@@ -7,14 +7,16 @@ export const driversApi = baseApi.injectEndpoints({
                 url: "/drivers/register",
                 method: "POST",
                 data: requestInfo
-            })
+            }),
+            invalidatesTags: ["Drivers"]
         }),
 
         getDriverInfo: builder.query({
             query: () => ({
                 url: "/drivers/me",
                 method: "GET"
-            })
+            }),
+            providesTags: ["Drivers"]
         })
     })
 })
