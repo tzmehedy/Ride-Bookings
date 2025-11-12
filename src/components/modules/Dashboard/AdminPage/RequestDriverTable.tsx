@@ -1,19 +1,38 @@
 import Loader from "@/components/layouts/Loader";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { useRequestedDriversQuery } from "@/redux/features/drivers/driver.api";
+import { driversApi, useApproveDriverMutation, useRequestedDriversQuery } from "@/redux/features/drivers/driver.api";
+import { useAppDispatch } from "@/redux/hook";
+import { toast } from "sonner";
 
 
 export default function RequestDriverTable() {
-
+    
     const { data, isLoading } = useRequestedDriversQuery(null)
+    const [approveDriver] = useApproveDriverMutation()
+    const dispatch = useAppDispatch()
     const allRequestedDrivers = data?.data
     
 
     if (isLoading) return <Loader />
 
-    const handelApproveAndReject = (id: string, status: string) =>{
-        console.log(id, status)
+    const handelApproveAndReject = async(id: string, status: string) =>{
+        
+        try {
+            const result = await approveDriver({id, status})
+            if(result?.data && status === "Accept"){
+                toast.success("The driver is approve for driving")
+                dispatch(driversApi.util.resetApiState())
+            }
+            if(result?.data && status === "Reject"){
+                toast.success("The driver is reject for driving")
+                dispatch(driversApi.util.resetApiState())
+            }
+            
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+            toast.error(error?.message)
+        }
     }
     return (
         <Table>
@@ -27,7 +46,8 @@ export default function RequestDriverTable() {
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {allRequestedDrivers?.map((requestDriver) => (
+                { allRequestedDrivers?.map((requestDriver) => (
+
                     <TableRow key={requestDriver._id}>
                         <TableCell className="font-medium">{requestDriver?.userId.name}</TableCell>
                         <TableCell>{requestDriver?.userId.email}</TableCell>
@@ -46,6 +66,11 @@ export default function RequestDriverTable() {
                         </TableCell>
                     </TableRow>
                 ))}
+                {
+                    allRequestedDrivers?.length === 0 && <TableRow>
+                        <TableCell colSpan={5} className="text-center text-muted-foreground">There is no application at this moment</TableCell>
+                    </TableRow> 
+                }
             </TableBody>
         </Table>
     )

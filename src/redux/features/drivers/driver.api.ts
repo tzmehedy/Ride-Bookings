@@ -25,7 +25,8 @@ export const driversApi = baseApi.injectEndpoints({
             query: ({id, status}) => ({
                 url: `/drivers/approve/${id}?status=${status}`,
                 method: "POST",
-            })
+            }),
+            invalidatesTags: ["Drivers"]
         }),
 
         requestedDrivers: builder.query<IResponse<IRequestedDrivers[]>, null>({

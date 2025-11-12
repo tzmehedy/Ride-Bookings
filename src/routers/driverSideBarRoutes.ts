@@ -18,7 +18,7 @@ export const driverSideBarRoutes: ISidebarItems[] = [
   },
 
   {
-    title: "Manage Your Account",
+    title: "Manage Account",
     items: [
       {
         title: "Application For Driver",
@@ -30,7 +30,6 @@ export const driverSideBarRoutes: ISidebarItems[] = [
         url: "/driver/application-status",
         component: ApplicationStatus
       },
-
     ],
-  }
+  },
 ]

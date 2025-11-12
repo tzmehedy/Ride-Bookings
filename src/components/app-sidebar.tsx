@@ -16,6 +16,7 @@ import Logo from "@/assets/icons/Logo/Logo"
 import { Link } from "react-router"
 import { useGetUserInfoQuery } from "@/redux/features/auth/auth.api"
 import { getSidebarItems } from "@/utilis/getsidebarItems"
+import { useGetDriverInfoQuery } from "@/redux/features/drivers/driver.api"
 
 // This is sample data.
 
@@ -23,11 +24,14 @@ import { getSidebarItems } from "@/utilis/getsidebarItems"
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
   const {data : userInfo} = useGetUserInfoQuery(undefined)
+  const {data: driverInfo} = useGetDriverInfoQuery(undefined)
   
-  
+
   const data = {
-    navMain: getSidebarItems(userInfo?.data.role),
+    navMain: getSidebarItems(userInfo?.data.role, driverInfo?.data.approval_status)
   };
+
+
   return (
     <Sidebar {...props}>
       <SidebarHeader>
