@@ -1,68 +1,92 @@
-import { MailIcon } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
+import type { Dispatch, SetStateAction } from "react"
+import Logo from "@/assets/icons/Logo/Logo"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { useForm } from "react-hook-form"
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import z from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
 
-export default function UpdateRideStatusModal() {
+interface IUpdateStatusModalProps{
+  open: boolean,
+  setOpen: Dispatch<SetStateAction<boolean>>,
+  rideId: string
+}
+
+const rideStatusSchema = z.object({
+  status: z.string()
+})
+
+export default function UpdateRideStatusModal({ open, setOpen, rideId }: IUpdateStatusModalProps) {
+  console.log(rideId)
+
+  const form = useForm<z.infer<typeof rideStatusSchema>>({
+    resolver: zodResolver(rideStatusSchema),
+    defaultValues: {
+      status: ""
+    }
+  })
+
+  const onSubmit = (value: z.infer<typeof rideStatusSchema>) =>{
+    console.log(value)
+
+  }
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">Newsletter</Button>
-      </DialogTrigger>
+    <Dialog open={open} onOpenChange={setOpen}>
+
       <DialogContent>
         <div className="mb-2 flex flex-col items-center gap-2">
           <div
             className="flex size-11 shrink-0 items-center justify-center rounded-full border"
             aria-hidden="true"
           >
-            <svg
-              className="stroke-zinc-800 dark:stroke-zinc-100"
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 32 32"
-              aria-hidden="true"
-            >
-              <circle cx="16" cy="16" r="12" fill="none" strokeWidth="8" />
-            </svg>
+            <Logo/>
           </div>
           <DialogHeader>
             <DialogTitle className="sm:text-center">
-              Never miss an update
+              Update Ride Status
             </DialogTitle>
-            <DialogDescription className="sm:text-center">
-              Subscribe to receive news and special offers.
-            </DialogDescription>
           </DialogHeader>
         </div>
 
-        <form className="space-y-5">
-          <div className="*:not-first:mt-2">
-            <div className="relative">
-              <Input
-                id="dialog-subscribe"
-                className="peer ps-9"
-                placeholder="hi@yourcompany.com"
-                type="email"
-                aria-label="Email"
-              />
-              <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-3 text-muted-foreground/80 peer-disabled:opacity-50">
-                <MailIcon size={16} aria-hidden="true" />
-              </div>
-            </div>
-          </div>
-          <Button type="button" className="w-full">
-            Subscribe
-          </Button>
-        </form>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <FormField
+              control={form.control}
+              name="status"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Select Status</FormLabel>
+                  <FormControl>
+
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <SelectTrigger className="w-[100%]">
+                        <SelectValue placeholder="Select" />
+                      </SelectTrigger>
+                      <SelectContent> 
+                        <SelectGroup>
+                          <SelectItem value="Picked_Up">Picked_Up</SelectItem>
+                          <SelectItem value="In_Transit">In_Transit</SelectItem>
+                          <SelectItem value="Completed">Completed</SelectItem>
+                          <SelectItem value="Canceled">Canceled</SelectItem>
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit">Update Status</Button>
+          </form>
+        </Form>
 
         <p className="text-center text-xs text-muted-foreground">
           By subscribing you agree to our{" "}

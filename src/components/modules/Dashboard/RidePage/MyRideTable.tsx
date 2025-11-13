@@ -62,13 +62,10 @@ export function MyRideTable() {
                         <TableCell className="">{rideInfo.price} Tk.</TableCell>
                         <TableCell className="">{rideInfo.ride_status}</TableCell>
                         <TableCell className=""><Button onClick={() => handleShowDetails(rideInfo)} className="cursor-pointer" title={rideInfo._id}>See Details</Button></TableCell>
-
-
-                        <RideDetailsModal defaultValueIndex={defaultValueIndex} rideData={selectedRideInfo} open={open} setOpen={setOpen} />
-
                     </TableRow>
                 ))}
             </TableBody>
+            <RideDetailsModal defaultValueIndex={defaultValueIndex} rideData={selectedRideInfo} open={open} setOpen={setOpen} />
         </Table>
     )
 }

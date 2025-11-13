@@ -77,7 +77,16 @@ export default function RideDetailsModal({ open, setOpen, rideData, defaultValue
 
                   <div>
                     <p><strong>Driver Info</strong></p>
-                    <p>{rideData?.driver?.vehicle_Info ? "" : "No Driver Info Found"}</p>
+                    <div>{rideData?.driver? <pre>
+                      <p>Name: {rideData?.driver?.userId?.name}</p>
+                      <p>Email: {rideData?.driver?.userId?.email}</p>
+                      <p>Email: {rideData?.driver?.userId?.phone}</p>
+                      <p><strong>Vehicle Info</strong></p>
+                      <p>Brand: {rideData?.driver?.vehicle_info?.brand_name}</p>
+                      <p>Model: {rideData?.driver?.vehicle_info?.model}</p>
+                      <p>Vehicle No: {rideData?.driver?.vehicle_info?.vehicle_number}</p>
+
+                    </pre> : "No Driver Info Found"}</div>
                   </div>
 
                   

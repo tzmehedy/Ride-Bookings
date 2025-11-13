@@ -22,7 +22,7 @@ export interface User {
 export interface Driver {
     _id: string
     userId: User,
-    vehicle_Info: {
+    vehicle_info: {
         brand_name: string,
         model: string,
         vehicle_number: string

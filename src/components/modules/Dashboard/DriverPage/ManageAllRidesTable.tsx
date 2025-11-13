@@ -3,14 +3,25 @@ import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
 import { useGetMyAllRidesQuery } from "@/redux/features/drivers/driver.api";
+import { useState } from "react";
+import UpdateRideStatusModal from "./UpdateRideStatusModal";
 
 
 
 export default function ManageAllRidesTable() {
     const { data, isLoading } = useGetMyAllRidesQuery(null)
+    const [open, setOpen] = useState(false)
+    const [rideId, setRideId] = useState("")
+
     if (isLoading) return <Loader />
+
     const allRides = data?.data?.rideId
-    console.log(allRides)
+
+    const handelModal = (id: string ) =>{
+        setOpen(true)
+        setRideId(id)
+    }
+   
     return (
         <Table>
             <TableHeader>
@@ -44,12 +55,13 @@ export default function ManageAllRidesTable() {
                         <TableCell className="">{ride.user.phone}</TableCell>
                         <TableCell className="">{ride.paymentMethod}</TableCell>
                         <TableCell className="">
-                            <Button>Update Ride Status</Button>
+                            <Button onClick={() => handelModal(ride._id)}>Update Ride Status</Button>
                         </TableCell>
                     </TableRow>)
                 }
 
             </TableBody>
+            <UpdateRideStatusModal open={open} setOpen={setOpen} rideId={rideId}/>
         </Table>
     )
 }

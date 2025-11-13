@@ -13,10 +13,7 @@ interface RideStatusTimelineProps {
   defaultValueIndex: number
 }
 
-
 export default function RideStatusTimeline({ defaultValueIndex }: RideStatusTimelineProps) {
-  console.log(defaultValueIndex)
-  
   return (
     <Timeline defaultValue={defaultValueIndex}  orientation="horizontal">
       {RideTimelineItems.map((item, index) => (
