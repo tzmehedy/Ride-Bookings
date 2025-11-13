@@ -7,7 +7,7 @@ export default function MyRideHistory() {
             <h1 className="text-3xl font-bold text-primary underline">Your Rides Info</h1>
         </div>
 
-        <div className="p-10">
+      <div className="mt-10 p-2 md:p-10">
             <MyRideTable/>
         </div>
     </div>

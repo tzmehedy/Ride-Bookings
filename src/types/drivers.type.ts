@@ -23,3 +23,24 @@ export interface VehicleInfo {
     vehicle_number: string
     _id: string
 }
+
+export interface IRequestedRides {
+    _id: string
+    user: User
+    paymentMethod: string
+    destination_address: string
+    pickup_address: string
+    distance: number
+    price: number
+    ride_status: string
+    createdAt: string
+    updatedAt: string
+    __v: number
+}
+
+export interface User {
+    _id: string
+    name: string
+    email: string
+    phone: string
+}
