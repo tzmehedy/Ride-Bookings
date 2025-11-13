@@ -41,6 +41,14 @@ export const driversApi = baseApi.injectEndpoints({
             query: () => ({
                 url: "/rides/requested-rides",
                 method: "GET"
+            }),
+            providesTags: ["Rides"]
+        }),
+
+        acceptRide: builder.mutation({
+            query: (rideId: string) =>({
+                url: `/drivers/accept-ride/${rideId}`,
+                method: "POST"
             })
         })
 
@@ -53,5 +61,6 @@ export const {
     useApproveDriverMutation,
     useGetDriverInfoQuery,
     useRequestedDriversQuery,
-    useGetRequestedRidesQuery
+    useGetRequestedRidesQuery,
+    useAcceptRideMutation,
 } = driversApi
