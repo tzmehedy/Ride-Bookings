@@ -1,6 +1,6 @@
 import { baseApi } from "@/redux/baseApi";
 import type { IRequestedDrivers, IResponse } from "@/types";
-import type { IRequestedRides } from "@/types/drivers.type";
+import type { IDriverRidesInfo, IRequestedRides } from "@/types/drivers.type";
 
 
 export const driversApi = baseApi.injectEndpoints({
@@ -50,6 +50,13 @@ export const driversApi = baseApi.injectEndpoints({
                 url: `/drivers/accept-ride/${rideId}`,
                 method: "POST"
             })
+        }),
+
+        getMyAllRides: builder.query<IResponse<IDriverRidesInfo>, null>({
+            query: () =>({
+                url: "/drivers/me",
+                method: "GET"
+            })
         })
 
 
@@ -63,4 +70,5 @@ export const {
     useRequestedDriversQuery,
     useGetRequestedRidesQuery,
     useAcceptRideMutation,
+    useGetMyAllRidesQuery
 } = driversApi

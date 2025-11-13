@@ -13,6 +13,7 @@ export interface ISidebarItems{
 
 export type TRole = "ADMIN" | "DRIVER" |"RIDER" 
 
+
 export interface IResponse<T>{
     success: boolean,
     message: string,

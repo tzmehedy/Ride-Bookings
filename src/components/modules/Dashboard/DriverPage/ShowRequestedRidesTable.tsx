@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { driversApi, useAcceptRideMutation, useGetRequestedRidesQuery } from '@/redux/features/drivers/driver.api'
 import { useAppDispatch } from '@/redux/hook'
+import { useNavigate } from 'react-router'
 import { toast } from 'sonner'
 
 
@@ -10,6 +11,7 @@ export default function ShowRequestedRidesTable() {
   const { data, isLoading } = useGetRequestedRidesQuery(null)
   const [acceptRide] = useAcceptRideMutation()
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
   const getRequestedRides = data?.data
 
@@ -26,9 +28,8 @@ export default function ShowRequestedRidesTable() {
       if (result.success) {
         toast.success("You accepted the ride.", { id: toastId })
         dispatch(driversApi.util.resetApiState())
+        navigate("/driver/all-rides")
       }
-
-
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       
