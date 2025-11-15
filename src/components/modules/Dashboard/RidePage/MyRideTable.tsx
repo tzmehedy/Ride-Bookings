@@ -22,6 +22,7 @@ export function MyRideTable() {
     const [selectedRideInfo, setSelectedRideInfo] = useState<IRide | null>(null)
     const [defaultValueIndex, setDefaultValueIndex] = useState(0)
 
+    console.log(ridesInfo)
 
     if (isLoading) {
         return <div className="h-100vh flex justify-center items-center">
@@ -49,7 +50,9 @@ export function MyRideTable() {
                     <TableHead>Distance</TableHead>
                     <TableHead className="">Price</TableHead>
                     <TableHead className="">Ride Status</TableHead>
-                    <TableHead className="">Action</TableHead>
+                    <TableHead className="">Payment Method</TableHead>
+                    <TableHead className="">Payment Status</TableHead>
+                    <TableHead className="text-center">Action</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -61,7 +64,14 @@ export function MyRideTable() {
                         <TableCell>{rideInfo.distance} km</TableCell>
                         <TableCell className="">{rideInfo.price} Tk.</TableCell>
                         <TableCell className="">{rideInfo.ride_status}</TableCell>
-                        <TableCell className=""><Button onClick={() => handleShowDetails(rideInfo)} className="cursor-pointer" title={rideInfo._id}>See Details</Button></TableCell>
+                        <TableCell className="">{rideInfo.paymentMethod}</TableCell>
+                        <TableCell className="">{rideInfo?.payment ? rideInfo?.payment.paymentStatus:"No data"}</TableCell>
+                        <TableCell className="space-x-2">
+                            <Button onClick={() => handleShowDetails(rideInfo)} className="cursor-pointer">See Details</Button>
+
+                            <Button disabled={rideInfo.paymentMethod === "Cash" || rideInfo.ride_status !== "Completed"} variant="outline" className="cursor-pointer border border-primary">💵Pay</Button>
+                            </TableCell>
+                        
                     </TableRow>
                 ))}
             </TableBody>

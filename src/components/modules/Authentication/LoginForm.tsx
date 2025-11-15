@@ -14,15 +14,7 @@ import Password from "@/components/ui/Password";
 
 const loginFormSchema = z.object({
   email: z.email(),
-  password: z
-    .string()
-    .regex(/^(?=.*[A-Z])/, {
-      message: "The password must have one upper case letter",
-    })
-    .regex(/^(?=.*\d)/, { message: "The password must have one number" })
-    .regex(/^(?=.*[!@#$%^&*,.?":{}|<>_\-+=~`[\]\\;/'])/, {
-      message: "The password must have a special character",
-    }),
+  password: z.string()
 });
 
 

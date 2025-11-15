@@ -55,7 +55,7 @@ export default function ManageAllRidesTable() {
                         <TableCell className="">{ride.user.phone}</TableCell>
                         <TableCell className="">{ride.paymentMethod}</TableCell>
                         <TableCell className="">
-                            <Button onClick={() => handelModal(ride._id)}>Update Ride Status</Button>
+                            <Button disabled={ride.ride_status === "Completed"} onClick={() => handelModal(ride._id)}>Update Ride Status</Button>
                         </TableCell>
                     </TableRow>)
                 }

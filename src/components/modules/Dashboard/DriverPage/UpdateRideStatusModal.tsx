@@ -13,6 +13,10 @@ import { useForm } from "react-hook-form"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { driversApi, useUpdateRidesStatusMutation } from "@/redux/features/drivers/driver.api"
+import { toast } from "sonner"
+import { useAppDispatch } from "@/redux/hook"
+import { ridesApi } from "@/redux/features/rides/rides.api"
 
 interface IUpdateStatusModalProps{
   open: boolean,
@@ -25,8 +29,9 @@ const rideStatusSchema = z.object({
 })
 
 export default function UpdateRideStatusModal({ open, setOpen, rideId }: IUpdateStatusModalProps) {
-  console.log(rideId)
-
+ 
+  const [updateRidesStatus] = useUpdateRidesStatusMutation()
+  const dispatch = useAppDispatch()
   const form = useForm<z.infer<typeof rideStatusSchema>>({
     resolver: zodResolver(rideStatusSchema),
     defaultValues: {
@@ -34,8 +39,24 @@ export default function UpdateRideStatusModal({ open, setOpen, rideId }: IUpdate
     }
   })
 
-  const onSubmit = (value: z.infer<typeof rideStatusSchema>) =>{
-    console.log(value)
+  const onSubmit = async(value: z.infer<typeof rideStatusSchema>) =>{
+    const toastId = toast.loading("Updating! Please wait.")
+    try {
+      
+      const result = await updateRidesStatus({rideId, status:value}).unwrap()
+      
+
+      if(result.success){
+        toast.success(result.message, { id: toastId })
+        setOpen(false)
+        dispatch(driversApi.util.resetApiState())
+        dispatch(ridesApi.util.resetApiState())
+
+      }
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      toast.error(error?.message, {id:toastId})
+    }
 
   }
   return (
@@ -75,7 +96,6 @@ export default function UpdateRideStatusModal({ open, setOpen, rideId }: IUpdate
                           <SelectItem value="Picked_Up">Picked_Up</SelectItem>
                           <SelectItem value="In_Transit">In_Transit</SelectItem>
                           <SelectItem value="Completed">Completed</SelectItem>
-                          <SelectItem value="Canceled">Canceled</SelectItem>
                         </SelectGroup>
                       </SelectContent>
                     </Select>

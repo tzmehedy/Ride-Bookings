@@ -16,7 +16,7 @@ export const ridesApi = baseApi.injectEndpoints({
                 url: "/rides/me",
                 method: "GET"
             }),
-            providesTags: ["Rides"]
+            providesTags: ["Rides", "Drivers"]
         })
     })
 })

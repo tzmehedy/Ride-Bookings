@@ -10,6 +10,7 @@ export interface IRide{
     ride_status: string
     createdAt: string
     updatedAt: string
+    payment: Payment
     __v: number
 }
 
@@ -27,4 +28,17 @@ export interface Driver {
         model: string,
         vehicle_number: string
     }
+}
+
+
+export interface Payment {
+    _id: string
+    ride: string
+    transitionId: string
+    amount: number
+    paymentStatus: string
+    createdAt: string
+    updatedAt: string
+    __v: number
+    paymentUrl: string
 }
