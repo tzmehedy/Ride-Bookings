@@ -42,3 +42,4 @@ export interface Payment {
     __v: number
     paymentUrl: string
 }
+

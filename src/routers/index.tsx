@@ -20,6 +20,8 @@ import RideRequest from "@/pages/Dashboard/RiderPage/RideRequest";
 import AllRideRequests from "@/pages/Dashboard/DriverPage/AllRideRequests";
 import { withApprove } from "@/utilis/withApprove";
 import ManageAllRides from "@/pages/Dashboard/DriverPage/ManageAllRides";
+import Success from "@/pages/Payment/Success";
+import MyRideHistory from "@/pages/Dashboard/RiderPage/MyRideHistory";
 
 
 
@@ -62,7 +64,11 @@ export const router = createBrowserRouter([
   {
     Component: withAuth(DashboardLayout, Role.RIDER as TRole),
     path: "/rider",
-    children: [...generateRoutes(riderSideBarRoutes),
+    children: [{
+      index: true,
+      Component: MyRideHistory
+
+    },...generateRoutes(riderSideBarRoutes),
     {
       Component: RideRequest,
       path: "ride-request",
@@ -95,4 +101,8 @@ export const router = createBrowserRouter([
     Component: Unauthorized,
     path: "/unauthorized",
   },
+  {
+    Component: Success,
+    path: "/payment/success"
+  }
 ]);

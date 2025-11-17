@@ -17,8 +17,16 @@ export const ridesApi = baseApi.injectEndpoints({
                 method: "GET"
             }),
             providesTags: ["Rides", "Drivers"]
+        }),
+
+        getPaymentUrl: builder.mutation({
+            query: ({rideId}) =>({
+                url: `/payment/init-payment/${rideId}`,
+                method: "POST"
+            })
         })
+
     })
 })
 
-export const {useRequestRideMutation, useGetAllRidesQuery} = ridesApi
+export const {useRequestRideMutation, useGetAllRidesQuery, useGetPaymentUrlMutation} = ridesApi
