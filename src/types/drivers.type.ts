@@ -79,7 +79,7 @@ export interface RideId {
     updatedAt: string
     __v: number
     driver: string
-    payment: string
+    payment: IPayment
 }
 
 export interface User {
@@ -94,4 +94,9 @@ export interface VehicleInfo {
     model: string
     vehicle_number: string
     _id: string
+}
+
+export interface IPayment{
+    paymentStatus: "string"
+
 }

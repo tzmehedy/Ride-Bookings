@@ -16,6 +16,7 @@ export default function ManageAllRidesTable() {
     if (isLoading) return <Loader />
 
     const allRides = data?.data?.rideId
+    console.log(allRides)
 
     const handelModal = (id: string ) =>{
         setOpen(true)
@@ -23,7 +24,7 @@ export default function ManageAllRidesTable() {
     }
    
     return (
-        <Table>
+        <Table >
             <TableHeader>
                 <TableRow>
                     <TableHead className="">Pick Up</TableHead>
@@ -34,10 +35,11 @@ export default function ManageAllRidesTable() {
                     <TableHead className="">Rider Name</TableHead>
                     <TableHead className="">Rider Phone</TableHead>
                     <TableHead className="">Payment Method</TableHead>
+                    <TableHead className="">Payment Status</TableHead>
                     <TableHead className="text-center">Action</TableHead>
                 </TableRow>
             </TableHeader>
-            <TableBody>
+            <TableBody className="">
                 {
                     allRides?.map((ride, index) => <TableRow key={index}>
                         <TableCell className="">{ride.pickup_address}</TableCell>
@@ -54,6 +56,7 @@ export default function ManageAllRidesTable() {
                         <TableCell className="">{ride.user.name}</TableCell>
                         <TableCell className="">{ride.user.phone}</TableCell>
                         <TableCell className="">{ride.paymentMethod}</TableCell>
+                        <TableCell className="">{ride.payment.paymentStatus}</TableCell>
                         <TableCell className="">
                             <Button disabled={ride.ride_status === "Completed"} onClick={() => handelModal(ride._id)}>Update Ride Status</Button>
                         </TableCell>
