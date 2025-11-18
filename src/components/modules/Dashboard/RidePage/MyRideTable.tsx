@@ -14,18 +14,19 @@ import type { IRide } from "@/types"
 import { RideTimelineItems } from "@/constants/ride"
 import { toast } from "sonner"
 import Loader from "@/components/layouts/Loader"
+import { cn } from "@/lib/utils"
 
 
 export function MyRideTable() {
-    const { data, isLoading : ridesInfoLoading } = useGetAllRidesQuery(null)
+    const { data, isLoading: ridesInfoLoading } = useGetAllRidesQuery(null)
     const ridesInfo = data?.data
     const [open, setOpen] = useState(false)
     const [selectedRideInfo, setSelectedRideInfo] = useState<IRide | null>(null)
     const [defaultValueIndex, setDefaultValueIndex] = useState(0)
-    const [getPaymentUrl, {isLoading: getPaymentUrlLoading}] = useGetPaymentUrlMutation()
-    
+    const [getPaymentUrl, { isLoading: getPaymentUrlLoading }] = useGetPaymentUrlMutation()
 
-    if (ridesInfoLoading && getPaymentUrlLoading ) <Loader/>
+
+    if (ridesInfoLoading && getPaymentUrlLoading) <Loader />
 
     const handleShowDetails = (rideInfo: IRide) => {
         RideTimelineItems.map((item) => {
@@ -37,20 +38,20 @@ export function MyRideTable() {
         setOpen(true)
     }
 
-    const handelPayment = async(rideId: string) => {
+    const handelPayment = async (rideId: string) => {
         try {
-            const result = await getPaymentUrl({rideId}).unwrap()
+            const result = await getPaymentUrl({ rideId }).unwrap()
             console.log(result)
 
-            if (result.data.paymentURL){
+            if (result.data.paymentURL) {
                 window.open(result.data.paymentURL)
             }
-            
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             console.log(error)
             toast.error(error?.data.message)
-            
+
         }
     }
 
@@ -79,14 +80,20 @@ export function MyRideTable() {
                         <TableCell>{rideInfo.destination_address}</TableCell>
                         <TableCell>{rideInfo.distance} km</TableCell>
                         <TableCell className="">{rideInfo.price} Tk.</TableCell>
-                        <TableCell className="">{rideInfo.ride_status}</TableCell>
+                        <TableCell className={cn({
+                            "text-green-500 font-bold": rideInfo.ride_status === "Accepted",
+                            "text-cyan-500 font-bold": rideInfo.ride_status === "Picked_Up",
+                            "text-blue-800 font-bold": rideInfo.ride_status === "In_Transit",
+                            "text-green-600 font-bold": rideInfo.ride_status === "Completed",
+                            "text-red-600 font-bold": rideInfo.ride_status === "Canceled",
+                        })}>{rideInfo.ride_status}</TableCell>
                         <TableCell className="">{rideInfo.paymentMethod}</TableCell>
                         <TableCell className="">{rideInfo?.payment ? rideInfo?.payment.paymentStatus : "No data"}</TableCell>
                         <TableCell className="space-x-2">
                             <Button onClick={() => handleShowDetails(rideInfo)} className="cursor-pointer">See Details</Button>
 
 
-                            <Button onClick={()=>handelPayment(rideInfo._id)} disabled={rideInfo.paymentMethod === "Cash" || rideInfo.ride_status !== "Completed"} variant="outline" className="cursor-pointer border border-primary">💵Pay</Button>
+                            <Button onClick={() => handelPayment(rideInfo._id)} disabled={rideInfo.paymentMethod === "Cash" || rideInfo.ride_status !== "Completed"} variant="outline" className="cursor-pointer border border-primary">💵Pay</Button>
                         </TableCell>
 
                     </TableRow>

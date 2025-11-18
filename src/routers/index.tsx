@@ -22,6 +22,8 @@ import { withApprove } from "@/utilis/withApprove";
 import ManageAllRides from "@/pages/Dashboard/DriverPage/ManageAllRides";
 import Success from "@/pages/Payment/Success";
 import MyRideHistory from "@/pages/Dashboard/RiderPage/MyRideHistory";
+import Fail from "@/pages/Payment/Fail";
+import Cancel from "@/pages/Payment/Cancel";
 
 
 
@@ -104,5 +106,13 @@ export const router = createBrowserRouter([
   {
     Component: Success,
     path: "/payment/success"
+  },
+  {
+    Component: Fail,
+    path: "/payment/failed"
+  },
+  {
+    Component: Cancel,
+    path: "/payment/cancel"
   }
 ]);
