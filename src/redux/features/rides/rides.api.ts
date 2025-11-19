@@ -1,5 +1,6 @@
 import { baseApi } from "@/redux/baseApi";
-import type { IResponse, IRide } from "@/types";
+import type { IResponse} from "@/types";
+import type { IRidesInfo } from "@/types/rides.type";
 
 export const ridesApi = baseApi.injectEndpoints({
     endpoints: (builder) =>({
@@ -11,10 +12,12 @@ export const ridesApi = baseApi.injectEndpoints({
             }),
             invalidatesTags: ["Rides"]
         }),
-        getAllRides: builder.query<IResponse<IRide[]>, null>({
-            query: () => ({
+
+        getAllRides: builder.query<IResponse<IRidesInfo>, unknown>({
+            query: (params) => ({
                 url: "/rides/me",
-                method: "GET"
+                method: "GET",
+                params
             }),
             providesTags: ["Rides", "Drivers"]
         }),

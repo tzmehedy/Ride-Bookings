@@ -1,3 +1,10 @@
+export interface IRidesInfo{
+    allRides: IRide[],
+    meta: {
+        numberOfTotalRides: number
+    }
+}
+
 export interface IRide{
     _id: string
     user: User

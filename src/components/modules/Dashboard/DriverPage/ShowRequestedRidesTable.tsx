@@ -17,14 +17,14 @@ export default function ShowRequestedRidesTable() {
 
   if (isLoading) return <Loader />
 
-  
+
 
   const handelAcceptRide = async (id: string) => {
     const toastId = toast.loading("Processing. Please wait...")
 
     try {
       const result = await acceptRide(id).unwrap()
-      
+
       if (result.success) {
         toast.success("You accepted the ride.", { id: toastId })
         dispatch(driversApi.util.resetApiState())
@@ -32,7 +32,7 @@ export default function ShowRequestedRidesTable() {
       }
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      
+
       toast.error(error.data.message, { id: toastId })
     }
   }
@@ -65,6 +65,11 @@ export default function ShowRequestedRidesTable() {
               <Button onClick={() => handelAcceptRide(ride._id)}>Accept</Button>
             </TableCell>
           </TableRow>)
+        }
+
+        {
+          getRequestedRides?.length === 0 && <TableCell colSpan={8} className="text-muted-foreground font-bold text-center pt-5">No Ride Request At This Moment</TableCell>
+
         }
 
       </TableBody>
