@@ -3,6 +3,7 @@ import type { IRequestedDrivers, IResponse } from "@/types";
 import type { IDriverRidesInfo, IRequestedRides } from "@/types/drivers.type";
 
 
+
 export const driversApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
         requestDrive: builder.mutation({
@@ -67,6 +68,14 @@ export const driversApi = baseApi.injectEndpoints({
                 data: status
             }),
             invalidatesTags: ["Rides"]
+        }),
+
+        updateOnlineStatus: builder.mutation({
+            query: (updatedInfo) =>({
+                url: "/drivers/setAvailability",
+                method: "POST",
+                data: updatedInfo
+            })
         })
 
 
@@ -81,5 +90,6 @@ export const {
     useGetRequestedRidesQuery,
     useAcceptRideMutation,
     useGetMyAllRidesQuery,
-    useUpdateRidesStatusMutation
+    useUpdateRidesStatusMutation,
+    useUpdateOnlineStatusMutation
 } = driversApi

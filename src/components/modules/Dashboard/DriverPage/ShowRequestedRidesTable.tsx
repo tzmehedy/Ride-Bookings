@@ -5,6 +5,7 @@ import { driversApi, useAcceptRideMutation, useGetRequestedRidesQuery } from '@/
 import { useAppDispatch } from '@/redux/hook'
 import { useNavigate } from 'react-router'
 import { toast } from 'sonner'
+import ActiveInactiveToggler from './ActiveInactiveToggler'
 
 
 export default function ShowRequestedRidesTable() {
@@ -38,41 +39,46 @@ export default function ShowRequestedRidesTable() {
   }
 
   return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead className="">Pick Up</TableHead>
-          <TableHead>Destination</TableHead>
-          <TableHead>Distance</TableHead>
-          <TableHead className="text-right">Price</TableHead>
-          <TableHead className="">Ride Status</TableHead>
-          <TableHead className="">Rider Name</TableHead>
-          <TableHead className="">Rider Phone</TableHead>
-          <TableHead className="">Action</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {
-          getRequestedRides?.map((ride, index) => <TableRow key={index}>
-            <TableCell className="">{ride.pickup_address}</TableCell>
-            <TableCell>{ride.destination_address}</TableCell>
-            <TableCell>{ride.distance}</TableCell>
-            <TableCell className="text-right">{ride.price}</TableCell>
-            <TableCell className="text-orange-500 font-bold">{ride.ride_status}</TableCell>
-            <TableCell className="">{ride.user.name}</TableCell>
-            <TableCell className="">{ride.user.phone}</TableCell>
-            <TableCell className="">
-              <Button onClick={() => handelAcceptRide(ride._id)}>Accept</Button>
-            </TableCell>
-          </TableRow>)
-        }
+    <>
+      <div className='flex justify-end mb-10'>
+        <ActiveInactiveToggler/>
+      </div>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="">Pick Up</TableHead>
+            <TableHead>Destination</TableHead>
+            <TableHead>Distance</TableHead>
+            <TableHead className="text-right">Price</TableHead>
+            <TableHead className="">Ride Status</TableHead>
+            <TableHead className="">Rider Name</TableHead>
+            <TableHead className="">Rider Phone</TableHead>
+            <TableHead className="">Action</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {
+            getRequestedRides?.map((ride, index) => <TableRow key={index}>
+              <TableCell className="">{ride.pickup_address}</TableCell>
+              <TableCell>{ride.destination_address}</TableCell>
+              <TableCell>{ride.distance}</TableCell>
+              <TableCell className="text-right">{ride.price}</TableCell>
+              <TableCell className="text-orange-500 font-bold">{ride.ride_status}</TableCell>
+              <TableCell className="">{ride.user.name}</TableCell>
+              <TableCell className="">{ride.user.phone}</TableCell>
+              <TableCell className="">
+                <Button onClick={() => handelAcceptRide(ride._id)}>Accept</Button>
+              </TableCell>
+            </TableRow>)
+          }
 
-        {
-          getRequestedRides?.length === 0 && <TableCell colSpan={8} className="text-muted-foreground font-bold text-center pt-5">No Ride Request At This Moment</TableCell>
+          {
+            getRequestedRides?.length === 0 && <TableCell colSpan={8} className="text-muted-foreground font-bold text-center pt-5">No Ride Request At This Moment</TableCell>
 
-        }
+          }
 
-      </TableBody>
-    </Table>
+        </TableBody>
+      </Table>
+    </>
   )
 }
