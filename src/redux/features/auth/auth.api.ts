@@ -1,4 +1,6 @@
 import { baseApi } from "@/redux/baseApi";
+import type { IResponse } from "@/types";
+import type { IUser } from "@/types/user.type";
 
 export const authApi = baseApi.injectEndpoints({
     endpoints: (builder) => ({
@@ -27,16 +29,25 @@ export const authApi = baseApi.injectEndpoints({
             invalidatesTags: ["User"]
         }),
 
-        getUserInfo: builder.query({
+        getUserInfo: builder.query<IResponse<IUser>, unknown>({
             query: () => ({
                 url: "/user/me",
                 method: "GET"
             }),
             providesTags: ["User"]
+        }),
+
+        updateUserInfo: builder.mutation({
+            query: (updatedInfo) =>({
+                url: "/user/update-user",
+                method: "POST",
+                data: updatedInfo
+            }),
+            invalidatesTags: ["User"]
         })
 
 
     })
 })
 
-export const { useRegisterMutation, useLoginMutation, useGetUserInfoQuery, useLogoutMutation } = authApi
+export const { useRegisterMutation, useLoginMutation, useGetUserInfoQuery, useLogoutMutation , useUpdateUserInfoMutation} = authApi

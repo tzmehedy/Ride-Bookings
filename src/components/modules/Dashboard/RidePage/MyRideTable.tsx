@@ -42,7 +42,7 @@ export function MyRideTable() {
 
     const { data, isLoading: ridesInfoLoading } = useGetAllRidesQuery(query)
 
-    const [getPaymentUrl, { isLoading: getPaymentUrlLoading }] = useGetPaymentUrlMutation()
+    const [getPaymentUrl] = useGetPaymentUrlMutation()
 
 
 
@@ -75,7 +75,7 @@ export function MyRideTable() {
     }, [ridesInfo, totalNumberOfItems])
 
 
-    if (ridesInfoLoading || getPaymentUrlLoading) return <Loader />
+    if (ridesInfoLoading) return <Loader />
 
     const handleShowDetails = (rideInfo: IRide) => {
         RideTimelineItems.map((item) => {
@@ -89,10 +89,10 @@ export function MyRideTable() {
 
 
     const handelPayment = async (rideId: string) => {
+        const toastId = toast.loading("Processing")
         try {
             const result = await getPaymentUrl({ rideId }).unwrap()
-            console.log(result)
-
+            
             if (result.data.paymentURL) {
                 window.open(result.data.paymentURL)
             }
@@ -100,7 +100,7 @@ export function MyRideTable() {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             console.log(error)
-            toast.error(error?.data.message)
+            toast.error(error?.data.message, { id: toastId })
 
         }
     }
