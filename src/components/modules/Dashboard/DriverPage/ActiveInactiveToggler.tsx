@@ -22,12 +22,12 @@ export default function ActiveInactiveToggler() {
         toast.success("You are in Active mode")
       }
       else{
-        toast.success("You are in Inactive mode")
+        toast.warning("You are in Inactive mode")
       }
       
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      console.log(error)
+      
       toast.error(error?.message)
       
     }

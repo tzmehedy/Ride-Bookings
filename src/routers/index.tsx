@@ -24,6 +24,7 @@ import Success from "@/pages/Payment/Success";
 import MyRideHistory from "@/pages/Dashboard/RiderPage/MyRideHistory";
 import Fail from "@/pages/Payment/Fail";
 import Cancel from "@/pages/Payment/Cancel";
+import EarningHistory from "@/pages/Dashboard/DriverPage/EarningHistory";
 
 
 
@@ -70,7 +71,7 @@ export const router = createBrowserRouter([
       index: true,
       Component: MyRideHistory
 
-    },...generateRoutes(riderSideBarRoutes),
+    }, ...generateRoutes(riderSideBarRoutes),
     {
       Component: RideRequest,
       path: "ride-request",
@@ -80,16 +81,21 @@ export const router = createBrowserRouter([
   {
     Component: withAuth(DashboardLayout, Role.DRIVER as TRole),
     path: "/driver",
-    children: [...generateRoutes([...driverSideBarRoutes]),
-        {
-          Component: withApprove(AllRideRequests),
-          path: "all-ride-requests"
-        },
-        {
-          Component: withApprove(ManageAllRides),
-          path: "all-rides"
-        }
-      ],
+    children: [
+      {
+        index: true,
+        Component: EarningHistory 
+
+      }, ...generateRoutes([...driverSideBarRoutes]),
+      {
+        Component: withApprove(AllRideRequests),
+        path: "all-ride-requests"
+      },
+      {
+        Component: withApprove(ManageAllRides),
+        path: "all-rides"
+      }
+    ],
   },
   {
     Component: Login,

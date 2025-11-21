@@ -100,3 +100,35 @@ export interface IPayment{
     paymentStatus: "string"
 
 }
+
+export interface IDriverStats {
+    todayRidesCount: TodayRidesCount
+    sevenDaysAgoRideCount: SevenDaysAgoRideCount
+    thirtyDaysAgoRideCount: ThirtyDaysAgoRideCount
+    totalEarnings: TotalEarnings
+}
+
+export interface TodayRidesCount {
+    _id: string
+    totalEarning: number
+    count: number
+}
+
+export interface SevenDaysAgoRideCount {
+    _id: string
+    totalEarning: number
+    count: number
+}
+
+export interface ThirtyDaysAgoRideCount {
+    _id: string
+    totalEarning: number
+    count: number
+}
+
+export interface TotalEarnings {
+    _id: string
+    totalEarnings: number
+    totalCompletedRides: number
+}
+

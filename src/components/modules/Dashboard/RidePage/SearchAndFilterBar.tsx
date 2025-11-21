@@ -57,13 +57,13 @@ export default function SearchAndFilterBar() {
     
 
   return (
-    <div className="mb-12 flex justify-center items-center gap-5">
+    <div className="mb-12 flex flex-col md:flex-row md:justify-center md:items-center gap-5">
         <div>
               <Input defaultValue={searchTerm} onChange={(e) => handelSearchChange(e.target.value)} placeholder="Search" />
         </div>
         <div>
               <Select defaultValue={sortByDate} onValueChange={(value) => handelSortChange(value)} >
-                  <SelectTrigger className="w-[180px]">
+                  <SelectTrigger className="w-[100%]">
                       <SelectValue placeholder="Order By Date" />
                   </SelectTrigger>
                   <SelectContent>
@@ -76,7 +76,7 @@ export default function SearchAndFilterBar() {
         <div>
 
               <Select defaultValue={rideStatus} onValueChange={(value) => handelRideStatusFilter(value)} >
-                  <SelectTrigger className="w-[180px]">
+                  <SelectTrigger className="w-[100%]">
                       <SelectValue placeholder="Select Ride Status" />
                   </SelectTrigger>
                   <SelectContent>
