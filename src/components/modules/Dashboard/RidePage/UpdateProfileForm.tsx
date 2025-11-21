@@ -29,9 +29,9 @@ export default function UpdateProfileForm() {
     const form = useForm<z.infer<typeof updateFormSchema>>({
         resolver: zodResolver(updateFormSchema),
         defaultValues: {
-            name: userInfo?.name || "",
-            email: userInfo?.email || "",
-            phone: userInfo?.phone  || "",
+            name: userInfo?.name ,
+            email: userInfo?.email,
+            phone: userInfo?.phone,
             password: ""
          }
     })

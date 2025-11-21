@@ -1,6 +1,7 @@
 import ApplicationStatus from "@/pages/Dashboard/DriverPage/ApplicationStatus";
 import DriverApplication from "@/pages/Dashboard/DriverPage/DriverApplication";
 import EarningHistory from "@/pages/Dashboard/DriverPage/EarningHistory";
+import UpdateProfile from "@/pages/Dashboard/DriverPage/UpdateProfile";
 import type { ISidebarItems } from "@/types";
 
 export const driverSideBarRoutes: ISidebarItems[] = [
@@ -29,6 +30,11 @@ export const driverSideBarRoutes: ISidebarItems[] = [
         title: "Application Status",
         url: "/driver/application-status",
         component: ApplicationStatus
+      },
+      {
+        title: "Update Profile",
+        url: "/driver/update-profile",
+        component: UpdateProfile
       },
     ],
   },

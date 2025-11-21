@@ -5,18 +5,33 @@ import { useId, useState } from "react"
 import { Switch } from "@/components/ui/switch"
 
 import { toast } from "sonner"
-import { useUpdateOnlineStatusMutation } from "@/redux/features/drivers/driver.api"
+import { useGetDriverInfoQuery, useUpdateOnlineStatusMutation } from "@/redux/features/drivers/driver.api"
+import Loader from "@/components/layouts/Loader"
 
 export default function ActiveInactiveToggler() {
+  
+  const {data, isLoading} = useGetDriverInfoQuery(null)
+
+  if(isLoading) <Loader/>
+
+  const driverInfo = data?.data
+
   const id = useId()
-  const [checked, setChecked] = useState<boolean>(false)
+
+
+
+  const [checked, setChecked] = useState("")
+
+
   const [updateOnlineStatus] = useUpdateOnlineStatusMutation()
 
-  const toggleSwitch = async(value: boolean) => {
+  
+
+  const toggleSwitch = async(value: string) => {
     setChecked(value)
     
     try {
-      const result = await updateOnlineStatus({online_status: value === true ? "Active" : "InActive"}).unwrap()
+      const result = await updateOnlineStatus({online_status: value}).unwrap()
     
       if(result.data.online_status === "Active"){
         toast.success("You are in Active mode")
@@ -27,9 +42,7 @@ export default function ActiveInactiveToggler() {
       
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
-      
       toast.error(error?.message)
-      
     }
 
 
@@ -49,8 +62,8 @@ export default function ActiveInactiveToggler() {
       </span>
       <Switch
         id={id}
-        
-        onCheckedChange={(value)=>toggleSwitch(value===true? true: false)}
+        checked={driverInfo?.online_status === "Active" ? true : false}
+        onCheckedChange={(value)=>toggleSwitch(value === true? "Active": "InActive")}
         aria-labelledby={`${id}-off ${id}-on`}
       />
       <span

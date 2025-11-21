@@ -15,7 +15,7 @@ export const driversApi = baseApi.injectEndpoints({
             invalidatesTags: ["Drivers"]
         }),
 
-        getDriverInfo: builder.query({
+        getDriverInfo: builder.query<IResponse<IDriverRidesInfo>, null>({
             query: () => ({
                 url: "/drivers/me",
                 method: "GET"
@@ -75,13 +75,15 @@ export const driversApi = baseApi.injectEndpoints({
                 url: "/drivers/setAvailability",
                 method: "POST",
                 data: updatedInfo
-            })
+            }),
+            invalidatesTags: ["Rides", "Drivers"]
         }),
         driverStatsInfo: builder.query<IResponse<IDriverStats>,null>({
             query: () =>({
                 url: "/stats/driver",
                 method: "GET",
-            })
+            }),
+            providesTags: ["Drivers"]
         })
 
 
