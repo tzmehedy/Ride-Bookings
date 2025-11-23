@@ -24,7 +24,7 @@ export default function UpdateProfileForm() {
     const dispatch = useAppDispatch()
     const userInfo = data?.data
 
-    if (isLoading) <Loader />
+    
 
     const form = useForm<z.infer<typeof updateFormSchema>>({
         resolver: zodResolver(updateFormSchema),
@@ -37,6 +37,7 @@ export default function UpdateProfileForm() {
     })
 
     const onSubmit = async(value: z.infer<typeof updateFormSchema>) => {
+        console.log(value)
         const toastId = toast.loading("Processing...")
         try {
             const result = await updateUserInfo(value).unwrap()
@@ -53,6 +54,8 @@ export default function UpdateProfileForm() {
         }
     }
 
+    if (isLoading) return <Loader />
+
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 border border-primary mx-auto p-5 rounded-xl shadow-xl">
@@ -64,7 +67,7 @@ export default function UpdateProfileForm() {
                             <FormItem>
                                 <FormLabel>Name</FormLabel>
                                 <FormControl>
-                                    <Input className="border border-primary" defaultValue={userInfo?.name} {...field} />
+                                    <Input className="border border-primary" {...field} />
                                 </FormControl>
 
                                 <FormMessage />
@@ -79,7 +82,7 @@ export default function UpdateProfileForm() {
                             <FormItem>
                                 <FormLabel>Email</FormLabel>
                                 <FormControl>
-                                    <Input disabled className="border border-primary" defaultValue={userInfo?.email} {...field} />
+                                    <Input disabled className="border border-primary" {...field} />
                                 </FormControl>
 
                                 <FormMessage />
@@ -95,7 +98,7 @@ export default function UpdateProfileForm() {
                             <FormItem>
                                 <FormLabel>Phone</FormLabel>
                                 <FormControl>
-                                    <Input className="border border-primary" defaultValue={userInfo?.phone} {...field} />
+                                    <Input className="border border-primary" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>

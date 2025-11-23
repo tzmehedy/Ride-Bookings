@@ -15,7 +15,7 @@ export const driversApi = baseApi.injectEndpoints({
             invalidatesTags: ["Drivers"]
         }),
 
-        getDriverInfo: builder.query<IResponse<IDriverRidesInfo>, null>({
+        getDriverInfo: builder.query<IResponse<IDriverRidesInfo>, unknown>({
             query: () => ({
                 url: "/drivers/me",
                 method: "GET"
@@ -84,6 +84,14 @@ export const driversApi = baseApi.injectEndpoints({
                 method: "GET",
             }),
             providesTags: ["Drivers"]
+        }),
+        updateDriverInfo: builder.mutation({
+            query: (updatedInfo) =>({
+                url: "/drivers/update-driver",
+                method: "POST",
+                data: updatedInfo
+            }),
+            invalidatesTags: ["Drivers"]
         })
 
 
@@ -100,5 +108,6 @@ export const {
     useGetMyAllRidesQuery,
     useUpdateRidesStatusMutation,
     useUpdateOnlineStatusMutation,
-    useDriverStatsInfoQuery
+    useDriverStatsInfoQuery,
+    useUpdateDriverInfoMutation,
 } = driversApi

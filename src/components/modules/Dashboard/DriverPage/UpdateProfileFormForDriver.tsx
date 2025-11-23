@@ -3,9 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import Password from "@/components/ui/Password";
-import { useGetDriverInfoQuery } from "@/redux/features/drivers/driver.api";
+import { driversApi, useGetDriverInfoQuery, useUpdateDriverInfoMutation } from "@/redux/features/drivers/driver.api";
+import { useAppDispatch } from "@/redux/hook";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import z from "zod";
 
 const updateDriverFormSchema = z.object({
@@ -21,30 +24,76 @@ const updateDriverFormSchema = z.object({
 
 
 export default function UpdateProfileFormForDriver() {
-  const { data, isLoading } = useGetDriverInfoQuery(null)
-  const driverInfo = data?.data
-  
-  if (isLoading) <Loader />
 
-  const form = useForm<z.infer<typeof updateDriverFormSchema>>(
-    {
+  const { data, isLoading } = useGetDriverInfoQuery(undefined)
+  const [updateDriverInfo] = useUpdateDriverInfoMutation()
+  const dispatch = useAppDispatch()
+  const driverInfo = data?.data
+
+  
+
+  const form = useForm<z.infer<typeof updateDriverFormSchema>>({
       resolver: zodResolver(updateDriverFormSchema),
       defaultValues: {
-        name: driverInfo?.userId.name,
-        email: driverInfo?.userId.email,
-        phone: driverInfo?.userId.phone,
+        name: "",
+        email: "",
+        phone: "",
         password: "",
-        brand_name: driverInfo?.vehicle_info.brand_name,
-        model: driverInfo?.vehicle_info.model,
-        vehicle_number: driverInfo?.vehicle_info.vehicle_number
-        
+        brand_name: "",
+        model: "",
+        vehicle_number:""
+      }
+  })
+
+  
+
+
+  useEffect(() => {
+    if (driverInfo) {
+      form.reset({
+        name: driverInfo?.userId?.name ?? "",
+        email: driverInfo?.userId?.email ?? "",
+        phone: driverInfo?.userId?.phone ?? "",
+        password: "",
+        brand_name: driverInfo?.vehicle_info?.brand_name ?? "",
+        model: driverInfo?.vehicle_info?.model ?? "",
+        vehicle_number: driverInfo?.vehicle_info?.vehicle_number ?? ""
+      });
+    }
+  }, [driverInfo, form]);
+
+  if (isLoading) return <Loader />
+
+  const onSubmit = async(value: z.infer<typeof updateDriverFormSchema>) => {
+    const toastId = toast.loading("Updating....")
+    const updatedInfo = {
+      user_info: {
+        phone: value.phone,
+        password: value.password,
+      },
+      vehicle_info: {
+        brand_name: value.brand_name,
+        model: value.model,
+        vehicle_number: value.vehicle_number
       }
     }
-  )
-  const onSubmit = (value: z.infer<typeof updateDriverFormSchema>) => {
-    console.log(value)
+
+    try {
+      const result = await updateDriverInfo(updatedInfo).unwrap()
+      if(result.success){
+        toast.success(result.message, { id: toastId })
+        dispatch(driversApi.util.resetApiState())
+      }
+      
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      toast.error(error.message)
+    }
 
   }
+
+  
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="border border-primary mx-auto p-5 rounded-xl shadow-xl space-y-3">
@@ -58,7 +107,7 @@ export default function UpdateProfileFormForDriver() {
               <FormItem>
                 <FormLabel>Name</FormLabel>
                 <FormControl>
-                  <Input disabled defaultValue={driverInfo?.userId?.name} className="border border-primary" {...field} />
+                  <Input {...field}  disabled className="border border-primary"  />
                 </FormControl>
 
                 <FormMessage />
@@ -75,7 +124,7 @@ export default function UpdateProfileFormForDriver() {
               <FormItem>
                 <FormLabel>Email</FormLabel>
                 <FormControl>
-                  <Input defaultValue={driverInfo?.userId?.email} disabled className="border border-primary"  {...field} />
+                  <Input  {...field} disabled className="border border-primary"  />
                 </FormControl>
 
                 <FormMessage />
@@ -90,7 +139,7 @@ export default function UpdateProfileFormForDriver() {
               <FormItem>
                 <FormLabel>Phone</FormLabel>
                 <FormControl>
-                  <Input defaultValue={driverInfo?.userId?.phone} className="border border-primary"  {...field} />
+                  <Input {...field}  className="border border-primary"/>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -106,7 +155,6 @@ export default function UpdateProfileFormForDriver() {
                 <FormControl>
                   <Password {...field} />
                 </FormControl>
-
                 <FormMessage />
               </FormItem>
             )}
@@ -127,7 +175,7 @@ export default function UpdateProfileFormForDriver() {
                 <FormItem>
                   <FormLabel>Brand Name</FormLabel>
                   <FormControl>
-                    <Input defaultValue={driverInfo?.vehicle_info.brand_name} className="border border-primary" {...field} />
+                    <Input {...field}   className="border border-primary"  />
                   </FormControl>
 
                   <FormMessage />
@@ -142,7 +190,7 @@ export default function UpdateProfileFormForDriver() {
                 <FormItem>
                   <FormLabel>Model</FormLabel>
                   <FormControl>
-                    <Input defaultValue={driverInfo?.vehicle_info.model} className="border border-primary"  {...field} />
+                    <Input {...field}  className="border border-primary"   />
                   </FormControl>
 
                   <FormMessage />
@@ -159,16 +207,13 @@ export default function UpdateProfileFormForDriver() {
                 <FormItem>
                   <FormLabel>Vehicle Number</FormLabel>
                   <FormControl>
-                    <Input defaultValue={driverInfo?.vehicle_info.vehicle_number} className="border border-primary"  {...field} />
+                    <Input {...field} className="border border-primary"   />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
           </div>
-
-
-
         </div>
         <Button type="submit">Update</Button>
       </form>
