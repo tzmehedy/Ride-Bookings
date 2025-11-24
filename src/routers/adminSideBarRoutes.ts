@@ -1,5 +1,5 @@
-import Analytics from "@/pages/AdminPages/Analytics";
-import ManageUser from "@/pages/AdminPages/ManageUser";
+import Analytics from "@/pages/Dashboard/AdminPage/Analytics";
+import ManageUser from "@/pages/Dashboard/AdminPage/ManageUser";
 import ApproveDriver from "@/pages/Dashboard/AdminPage/ApproveDriver";
 import type { ISidebarItems } from "@/types";
 
