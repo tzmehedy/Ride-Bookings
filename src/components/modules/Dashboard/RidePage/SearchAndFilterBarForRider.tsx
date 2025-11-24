@@ -7,7 +7,7 @@ import  { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 
 
-export default function SearchAndFilterBar() {
+export default function SearchAndFilterBarRider() {
 
     const [searchTerm, setSearchTerm] = useState<string>("")
 

@@ -4,11 +4,29 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { useBlockedUnBlockedAUserMutation, useGetAllUserInfoQuery } from "@/redux/features/admin/admin.api";
 import { GoBlocked } from "react-icons/go";
 import { toast } from "sonner";
+import SearchAndFilterBarAdmin from "./SearchAndFilterBarForAdmin";
+import { useSearchParams } from "react-router";
+import { cn } from "@/lib/utils";
 
 
 export default function AllUserInfoTable() {
-    const { data, isLoading } = useGetAllUserInfoQuery(undefined)
+
+    const [searchParams] = useSearchParams()
+
+    const searchTerm = searchParams.get("searchTerm")
+    const blocked_status = searchParams.get("blocked_status")
+    const role = searchParams.get("role")
+    
+    const query = {
+        searchTerm,
+        blocked_status,
+        role
+    }
+
+    const { data, isLoading } = useGetAllUserInfoQuery(query)
+
     const [blockedUnBlockedAUser] = useBlockedUnBlockedAUserMutation()
+
     const usersInfo = data?.data
 
     const handelBlockedOrUnblocked = async(id: string, blockStatus: boolean) => {
@@ -34,45 +52,54 @@ export default function AllUserInfoTable() {
 
 
     if (isLoading) return <Loader />
+
     return (
-        <Table>
-            <TableHeader>
-                <TableRow className="text-center">
-                    <TableHead className="">#</TableHead>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Email</TableHead>
-                    <TableHead>Phone</TableHead>
-                    <TableHead>Role</TableHead>
-                    <TableHead className="">Is Blocked</TableHead>
-                    <TableHead className="">Action</TableHead>
-                </TableRow>
-            </TableHeader>
-            <TableBody>
-                {
-                    usersInfo?.map((userInfo, index) => <TableRow key={index}>
-                        <TableCell className="">{index + 1}</TableCell>
-                        <TableCell>{userInfo?.name}</TableCell>
-                        <TableCell>{userInfo?.email}</TableCell>
-                        <TableCell>{userInfo?.phone}</TableCell>
-                        <TableCell>{userInfo?.role}</TableCell>
-                        <TableCell className="">{userInfo?.isBlocked ? "Blocked" : "Not Block"}</TableCell>
-                        <TableCell>
-                            <Button onClick={()=>handelBlockedOrUnblocked(userInfo?._id, !userInfo?.isBlocked)} variant="outline" className="border border-destructive cursor-pointer" title="Block The User">
-                                <GoBlocked className="text-destructive" />
-                            </Button>
-                        </TableCell>
-                    </TableRow>)
-                }
-
-                {
-                    usersInfo?.length === 0 && <TableRow>
-                        <TableCell>No Users have at this moment</TableCell>
+        <>
+            <div>
+                <SearchAndFilterBarAdmin/>
+            </div>
+            <Table>
+                <TableHeader>
+                    <TableRow className="text-center">
+                        <TableHead className="">#</TableHead>
+                        <TableHead>Name</TableHead>
+                        <TableHead>Email</TableHead>
+                        <TableHead>Phone</TableHead>
+                        <TableHead>Role</TableHead>
+                        <TableHead className="">Is Blocked</TableHead>
+                        <TableHead className="">Action</TableHead>
                     </TableRow>
-                }
+                </TableHeader>
+                <TableBody>
+                    {
+                        usersInfo?.map((userInfo, index) => <TableRow key={index}>
+                            <TableCell className="">{index + 1}</TableCell>
+                            <TableCell>{userInfo?.name}</TableCell>
+                            <TableCell>{userInfo?.email}</TableCell>
+                            <TableCell>{userInfo?.phone}</TableCell>
+                            <TableCell>{userInfo?.role}</TableCell>
+                            <TableCell className={cn({
+                                "text-destructive font-bold": userInfo?.isBlocked,
+                                "text-primary font-bold": !userInfo?.isBlocked
+                            })}>{userInfo?.isBlocked ? "Blocked" : "Not Blocked"}</TableCell>
+                            <TableCell>
+                                <Button onClick={() => handelBlockedOrUnblocked(userInfo?._id, !userInfo?.isBlocked)} variant="outline" className="border border-destructive cursor-pointer" title="Block The User">
+                                    <GoBlocked className="text-destructive" />
+                                </Button>
+                            </TableCell>
+                        </TableRow>)
+                    }
+
+                    {
+                        usersInfo?.length === 0 && <TableRow>
+                            <TableCell>No Users have at this moment</TableCell>
+                        </TableRow>
+                    }
 
 
 
-            </TableBody>
-        </Table>
+                </TableBody>
+            </Table>
+        </>
     )
 }

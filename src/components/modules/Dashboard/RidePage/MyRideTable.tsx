@@ -15,8 +15,8 @@ import { RideTimelineItems } from "@/constants/ride"
 import { toast } from "sonner"
 import Loader from "@/components/layouts/Loader"
 import { cn } from "@/lib/utils"
-import SearchAndFilterBar from "./SearchAndFilterBar"
 import { useSearchParams } from "react-router"
+import SearchAndFilterBarRider from "./SearchAndFilterBarForRider"
 
 
 export function MyRideTable() {
@@ -115,7 +115,7 @@ export function MyRideTable() {
 
     return (
         <>
-            <SearchAndFilterBar />
+            <SearchAndFilterBarRider />
 
             <Table className="">
                 <TableHeader>
