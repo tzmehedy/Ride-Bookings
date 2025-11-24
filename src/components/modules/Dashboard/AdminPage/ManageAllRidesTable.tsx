@@ -13,10 +13,12 @@ export default function ManageAllRidesTable() {
 
     const searchTerm = searchParams.get("searchTerm")
     const ride_status = searchParams.get("ride_status")
+    const date = searchParams.get("date")
 
     const query = {
         searchTerm,
-        ride_status
+        ride_status,
+        date
     }
 
     const { data, isLoading } = useGetAllRidesQuery(query)

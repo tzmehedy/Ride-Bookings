@@ -6,10 +6,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router";
 import { FcClearFilters } from "react-icons/fc";
+import Datepicker from "./Datepicker";
 
 
 export default function SearchAndFilterForAllRides() {
-
     const [searchParams, setSearchParams] = useSearchParams()
 
 
@@ -42,14 +42,11 @@ export default function SearchAndFilterForAllRides() {
         setSearchParams(params)
     }
 
-
-    
-
-
     const handelClearSearchAndFilter = () => {
         const params = new URLSearchParams(searchParams)
         params.delete("searchTerm")
         params.delete("ride_status")
+        params.delete("date")
         setSearchParams(params)
     }
 
@@ -82,6 +79,7 @@ export default function SearchAndFilterForAllRides() {
                     </Select>
 
                 </div>
+
                 <div>
 
                     {/* <Select value={blockedStatus} onValueChange={(value) => handelIsBlockedFilter(value)}>
@@ -94,6 +92,10 @@ export default function SearchAndFilterForAllRides() {
                         </SelectContent>
                     </Select> */}
 
+                </div>
+
+                <div>
+                    <Datepicker/>
                 </div>
 
             </div>
