@@ -2,6 +2,7 @@ import Analytics from "@/pages/Dashboard/AdminPage/Analytics";
 import ManageUser from "@/pages/Dashboard/AdminPage/ManageUser";
 import ApproveDriver from "@/pages/Dashboard/AdminPage/ApproveDriver";
 import type { ISidebarItems } from "@/types";
+import ManageAllRidesForAdmin from "@/pages/Dashboard/AdminPage/ManageAllRidesForAdmin";
 
 export const adminSideBarRoutes: ISidebarItems[] = [
   {
@@ -15,12 +16,18 @@ export const adminSideBarRoutes: ISidebarItems[] = [
     ],
   },
   {
-    title: "User Management",
+    title: "Management",
     items: [
       {
         title: "Manage User",
         url: "/admin/manage-user",
         component: ManageUser
+      },
+      {
+        title: "Manage All Rides",
+        url: "/admin/all-rides",
+        component: ManageAllRidesForAdmin
+
       },
       {
         title: "Drivers Application",

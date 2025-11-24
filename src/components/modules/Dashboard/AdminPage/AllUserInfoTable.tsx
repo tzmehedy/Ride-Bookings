@@ -16,7 +16,7 @@ export default function AllUserInfoTable() {
     const searchTerm = searchParams.get("searchTerm")
     const blocked_status = searchParams.get("blocked_status")
     const role = searchParams.get("role")
-    
+
     const query = {
         searchTerm,
         blocked_status,
@@ -91,8 +91,8 @@ export default function AllUserInfoTable() {
                     }
 
                     {
-                        usersInfo?.length === 0 && <TableRow>
-                            <TableCell>No Users have at this moment</TableCell>
+                        usersInfo?.length === 0 && <TableRow className="text-center">
+                            <TableCell colSpan={7} className="py-5 text-muted-foreground">Users Data Not Found</TableCell>
                         </TableRow>
                     }
 

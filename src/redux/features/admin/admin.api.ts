@@ -1,5 +1,6 @@
 import { baseApi } from "@/redux/baseApi";
 import type { IResponse } from "@/types";
+import type { IAllRidesForAdmin } from "@/types/admin.types";
 import type { IUser } from "@/types/user.type";
 
 export const adminApis = baseApi.injectEndpoints({
@@ -21,9 +22,17 @@ export const adminApis = baseApi.injectEndpoints({
                 data: {blockStatus}
             }),
             invalidatesTags: ["Admin"]
+        }),
+
+        getAllRides: builder.query<IResponse<IAllRidesForAdmin[]>, unknown>({
+            query: (params) => ({
+                url: `/rides/all-rides`,
+                method: "GET",
+                params
+            })
         })
     })
 })
 
 
-export const {useGetAllUserInfoQuery, useBlockedUnBlockedAUserMutation} = adminApis
+export const {useGetAllUserInfoQuery, useBlockedUnBlockedAUserMutation, useGetAllRidesQuery} = adminApis

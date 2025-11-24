@@ -8,16 +8,14 @@ import { useSearchParams } from "react-router";
 import { FcClearFilters } from "react-icons/fc";
 
 
-export default function SearchAndFilterBarAdmin() {
+export default function SearchAndFilterForAllRides() {
 
     const [searchParams, setSearchParams] = useSearchParams()
 
 
     const searchTerm = searchParams.get("searchTerm") || ""
-    const role = searchParams.get("role") || ""
-    const blockedStatus = searchParams.get("blocked_status") || ""
+    const ride_status = searchParams.get("ride_status") || ""
 
-   
     useEffect(() => {
         if (searchParams.toString() !== "") {
             setSearchParams({})
@@ -38,25 +36,20 @@ export default function SearchAndFilterBarAdmin() {
         setSearchParams(params)
     }
 
-    const handelRoleChange = (role: string) => {
+    const handelRideStatusChange = (ride_status: string) => {
         const params = new URLSearchParams(searchParams)
-        params.set("role", role)
+        params.set("ride_status", ride_status)
         setSearchParams(params)
     }
+
 
     
-    const handelIsBlockedFilter = (blocked_status: string) => {
-        const params = new URLSearchParams(searchParams)
-        params.set("blocked_status", blocked_status)
-        setSearchParams(params)
-    }
 
 
-    const handelClearSearchAndFilter = () =>{
+    const handelClearSearchAndFilter = () => {
         const params = new URLSearchParams(searchParams)
         params.delete("searchTerm")
-        params.delete("role")
-        params.delete("blocked_status")
+        params.delete("ride_status")
         setSearchParams(params)
     }
 
@@ -64,30 +57,34 @@ export default function SearchAndFilterBarAdmin() {
         <>
             <div className="flex justify-end mb-5">
                 <Button onClick={handelClearSearchAndFilter} variant="outline" className="text-muted-foreground border border-primary">
-                    <FcClearFilters className="" /> 
+                    <FcClearFilters className="" />
                     Clear Search & Filter
                 </Button>
             </div>
 
             <div className="mb-12 flex flex-col md:flex-row md:justify-center md:items-center gap-5">
                 <div>
-                    <Input value={searchTerm} onChange={(e) => handelSearchChange(e.target.value)} placeholder="Search by name, email, phone" />
+                    <Input value={searchTerm} onChange={(e) => handelSearchChange(e.target.value)} placeholder="Search" />
                 </div>
                 <div>
-                    <Select value={role} onValueChange={(value) => handelRoleChange(value)} >
+                    <Select value={ride_status} onValueChange={(value) => handelRideStatusChange(value)} >
                         <SelectTrigger className="w-[100%]">
-                            <SelectValue placeholder="Role" />
+                            <SelectValue placeholder="Ride Status" />
                         </SelectTrigger>
                         <SelectContent>
-                            <SelectItem value="DRIVER">Driver</SelectItem>
-                            <SelectItem value="RIDER">Rider</SelectItem>
+                            <SelectItem value="Requested">Requested</SelectItem>
+                            <SelectItem value="Accepted">Accepted</SelectItem>
+                            <SelectItem value="Picked_Up">Picked_Up</SelectItem>
+                            <SelectItem value="In_Transit">In_Transit</SelectItem>
+                            <SelectItem value="Completed">Completed</SelectItem>
+                            <SelectItem value="Canceled">Canceled</SelectItem>
                         </SelectContent>
                     </Select>
 
                 </div>
                 <div>
 
-                    <Select value={blockedStatus} onValueChange={(value) => handelIsBlockedFilter(value)}>
+                    {/* <Select value={blockedStatus} onValueChange={(value) => handelIsBlockedFilter(value)}>
                         <SelectTrigger className="w-[100%]">
                             <SelectValue placeholder="Select" />
                         </SelectTrigger>
@@ -95,7 +92,7 @@ export default function SearchAndFilterBarAdmin() {
                             <SelectItem value="true">Blocked</SelectItem>
                             <SelectItem value="false">Not Blocked</SelectItem>
                         </SelectContent>
-                    </Select>
+                    </Select> */}
 
                 </div>
 
