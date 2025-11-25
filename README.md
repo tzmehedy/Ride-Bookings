@@ -1,73 +1,84 @@
-# React + TypeScript + Vite
+<h1>🚖 Ride Management System – Frontend (React + Redux Toolkit + RTK Query)</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A production-grade, fully responsive ride-sharing platform frontend inspired by apps like Uber and Pathao. This app provides tailored interfaces and functionality for Riders, Drivers,        and Admins, with real-time data fetching, role-based access control, and seamless API interactions.
 
-Currently, two official plugins are available:
+<h1>🌐 Live </h1>
+🔗 Deployment Link:    https://ride-sharing-eta.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<h1>📦 Repository</h1>
+🔗 Frontend Repo: https://github.com/tzmehedy/Ride-Bookings <br/>
+🔗 Backend API Repo: https://github.com/tzmehedy/ride-bookings-API
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+<h1>🚀 Project Overview</h1>
 
-## Expanding the ESLint configuration
+<pre>
+The platform is designed for real-world usability with:
+=> Role-based dashboards
+=> Secure authentication with JWT
+=> Fully responsive and mobile-first UI
+=> Dynamic ride lifecycle management
+=> Visual analytics & performance optimization
+=> Production-ready code architecture using Redux Toolkit & RTK Query
+</pre>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+<h1>🏗️ Tech Stack</h1>
+<pre>
+  
+Frontend
+⚛️ React (React Router)
+🔄 Redux Toolkit + RTK Query
+📘 TypeScript
+📘 Shadcn Ui, Origin Ui, Hyper Ui
+🎨 Tailwind CSS
+📡 Axios
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Backend (API)
+🟢 Node.js / Express
+🍃 MongoDB (Mongoose)
+🔐 JWT + bcrypt (auth)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Others
+📊 Recharts (analytics)
+</pre>
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+<h1>🛠️ Setup Instructions</h1>
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+<pre>
+  1️⃣ Clone Repository
+      git clone https://github.com/tzmehedy/Ride-Bookings.git
+      cd ride-bookings
+  2️⃣ Install Dependencies
+      npm install
+  3️⃣ Create Environment Variables
+      Create a .env.local file:
+      VITE_API_URL=http://localhost:5000
+      VITE_MAP_API_KEY=XXXXXXXX
+  4️⃣ Start Development Server
+      npm run dev
+      App will launch at:
+      👉 http://localhost:5173
+  5️⃣ Build for Production
+       npm run build
+</pre>
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
