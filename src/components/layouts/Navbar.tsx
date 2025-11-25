@@ -17,6 +17,7 @@ import { authApi, useGetUserInfoQuery, useLogoutMutation } from "@/redux/feature
 import { Role } from "@/constants/role";
 import { toast } from "sonner";
 import { useAppDispatch } from "@/redux/hook";
+import Loader from "./Loader";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
@@ -32,10 +33,12 @@ const navigationLinks = [
 ];
 
 export default function Navbar() {
-  const { data: userInfo } = useGetUserInfoQuery(undefined);
+  const { data: userInfo, isLoading } = useGetUserInfoQuery(undefined);
   const [logOut,] = useLogoutMutation()
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
+
+  
 
   const handelLogout = async () => {
     try {
@@ -50,6 +53,7 @@ export default function Navbar() {
     }
   }
 
+  if(isLoading) <Loader/>
 
   return (
     <header className="container mx-auto border-b px-4 md:px-6">

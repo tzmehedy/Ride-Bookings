@@ -31,7 +31,7 @@ export default function HowItWorks() {
         <div className="space-y-10 w-full md:w-2/3">
           <button
             onClick={() => setImageLink(img1)}
-            className="w-full text-start shadow-2xl p-3 cursor-pointer transition-all duration-100 rounded-b-sm"
+            className="w-full text-start shadow-2xl p-3 cursor-pointer transition-all duration-100 rounded-lg border border-primary"
           >
             <h1 className="text-primary font-bold">1. Type Your Destination</h1>
             <p className="mb-5">
@@ -42,7 +42,7 @@ export default function HowItWorks() {
           </button>
           <button
             onClick={() => setImageLink(img2)}
-            className="w-full text-start shadow-2xl p-3 cursor-pointer transition-all duration-100 rounded-b-sm"
+            className="w-full text-start shadow-2xl p-3 cursor-pointer transition-all duration-100 rounded-lg border border-primary"
           >
             <h1 className="text-primary font-bold">
               2. Confirm Pick-up Location
@@ -55,7 +55,7 @@ export default function HowItWorks() {
           </button>
           <button
             onClick={() => setImageLink(img3)}
-            className="w-full text-start shadow-2xl p-3 cursor-pointer transition-all duration-100 rounded-b-sm"
+            className="w-full text-start shadow-2xl p-3 cursor-pointer transition-all duration-100 rounded-lg border border-primary"
           >
             <h1 className="text-primary font-bold">3. Choose Payment Method</h1>
             <p className="mb-5">
@@ -65,7 +65,7 @@ export default function HowItWorks() {
           </button>
           <button
             onClick={() => setImageLink(img4)}
-            className="w-full text-start shadow-2xl p-3 cursor-pointer transition-all duration-100 rounded-b-sm"
+            className="w-full text-start shadow-2xl p-3 cursor-pointer transition-all duration-100 rounded-lg border border-primary"
           >
             <h1 className="text-primary font-bold">
               4. Driver On The Way To Pick-up

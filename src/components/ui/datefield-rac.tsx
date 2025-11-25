@@ -1,17 +1,16 @@
-"use client"
 
 import {
   composeRenderProps,
-  DateFieldProps,
+  type DateFieldProps,
   DateField as DateFieldRac,
-  DateInputProps as DateInputPropsRac,
+  type DateInputProps as DateInputPropsRac,
   DateInput as DateInputRac,
-  DateSegmentProps,
+  type DateSegmentProps,
   DateSegment as DateSegmentRac,
-  DateValue as DateValueRac,
-  TimeFieldProps,
+  type DateValue as DateValueRac,
+  type TimeFieldProps,
   TimeField as TimeFieldRac,
-  TimeValue as TimeValueRac,
+  type TimeValue as TimeValueRac,
 } from "react-aria-components"
 
 import { cn } from "@/lib/utils"
@@ -86,5 +85,6 @@ function DateInput({
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { DateField, DateInput, DateSegment, TimeField, dateInputStyle }
 export type { DateInputProps }

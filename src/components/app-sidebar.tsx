@@ -17,18 +17,21 @@ import { Link } from "react-router"
 import { useGetUserInfoQuery } from "@/redux/features/auth/auth.api"
 import { getSidebarItems } from "@/utilis/getsidebarItems"
 import { useGetDriverInfoQuery } from "@/redux/features/drivers/driver.api"
+import Loader from "./layouts/Loader"
 
 // This is sample data.
 
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
-  const {data : userInfo} = useGetUserInfoQuery(undefined)
-  const {data: driverInfo} = useGetDriverInfoQuery(undefined)
+  const {data:userInfo, isLoading} = useGetUserInfoQuery(undefined)
   
+  const {data: driverInfo} = useGetDriverInfoQuery(undefined)
+
+  if(isLoading) return <Loader/>
 
   const data = {
-    navMain: getSidebarItems(userInfo?.data.role, driverInfo?.data.approval_status)
+    navMain: getSidebarItems(userInfo?.data?.role as string, driverInfo?.data?.approval_status as string)
   };
 
 

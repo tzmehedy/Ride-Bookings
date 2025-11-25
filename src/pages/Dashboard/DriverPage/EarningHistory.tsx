@@ -1,4 +1,5 @@
-import { Barchart } from "@/components/modules/Dashboard/DriverPage/BarChart";
+
+import { Barchart } from "@/components/modules/Dashboard/DriverPage/Barchart";
 import HeaderSection from "@/components/modules/Dashboard/DriverPage/HeaderSection";
 import { Piechart } from "@/components/modules/Dashboard/DriverPage/Piechart";
 

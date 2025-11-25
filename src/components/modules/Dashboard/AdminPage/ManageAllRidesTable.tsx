@@ -15,8 +15,6 @@ export default function ManageAllRidesTable() {
     const ride_status = searchParams.get("ride_status")
     const date = searchParams.get("date")
 
-    console.log(searchTerm)
-
     const query = {
         searchTerm,
         ride_status,
