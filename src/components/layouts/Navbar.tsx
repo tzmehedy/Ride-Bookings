@@ -34,11 +34,11 @@ const navigationLinks = [
 
 export default function Navbar() {
   const { data: userInfo, isLoading } = useGetUserInfoQuery(undefined);
-  const [logOut,] = useLogoutMutation()
+  const [logOut] = useLogoutMutation()
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
-  
+  if (isLoading) <Loader />
 
   const handelLogout = async () => {
     try {
@@ -53,7 +53,9 @@ export default function Navbar() {
     }
   }
 
-  if(isLoading) <Loader/>
+  console.log(userInfo?.data?.role)
+
+  
 
   return (
     <header className="container mx-auto border-b px-4 md:px-6">
