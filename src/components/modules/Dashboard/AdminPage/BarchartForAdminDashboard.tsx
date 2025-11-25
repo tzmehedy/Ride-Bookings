@@ -12,7 +12,6 @@ import {
     ChartTooltip,
     ChartTooltipContent,
 } from "@/components/ui/chart"
-import Loader from "@/components/layouts/Loader"
 import { useGetStatsForAnalyticsQuery } from "@/redux/features/admin/admin.api"
 
 export const description = "A multiple bar chart"
@@ -31,10 +30,10 @@ const chartConfig = {
 } satisfies ChartConfig
 
 export function BarchartForAdminDashboard() {
-    const {data, isLoading} = useGetStatsForAnalyticsQuery(undefined)
+    const {data} = useGetStatsForAnalyticsQuery(undefined)
         const adminStats = data?.data
     
-        if (isLoading) return <Loader />
+
 
     const chartData = [
         { day: "1", total_revenue: adminStats?.total_revenue_in_oneDays.one_day_revenue || 0, total_Rides: adminStats?.total_revenue_in_oneDays?.count  || 0},

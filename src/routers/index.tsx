@@ -26,6 +26,7 @@ import Fail from "@/pages/Payment/Fail";
 import Cancel from "@/pages/Payment/Cancel";
 import EarningHistory from "@/pages/Dashboard/DriverPage/EarningHistory";
 import Analytics from "@/pages/Dashboard/AdminPage/Analytics";
+import Block from "@/pages/BlockPage/Block";
 
 
 
@@ -124,5 +125,9 @@ export const router = createBrowserRouter([
   {
     Component: Cancel,
     path: "/payment/cancel"
+  },
+  {
+    Component: Block,
+    path: "/block"
   }
 ]);

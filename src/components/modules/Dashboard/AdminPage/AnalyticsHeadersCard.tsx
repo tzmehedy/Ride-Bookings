@@ -8,8 +8,9 @@ export default function AnalyticsHeadersCard() {
     const {data, isLoading} = useGetStatsForAnalyticsQuery(undefined)
     
       const adminStats = data?.data
+      
+      if(isLoading) return <Loader/>
 
-    if (isLoading) return <Loader />
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           <Card className="bg-[#5b9c08] ">

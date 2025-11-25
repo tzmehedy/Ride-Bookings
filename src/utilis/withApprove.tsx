@@ -11,7 +11,7 @@ export const withApprove = (Component: ComponentType) =>{
 
         if(isLoading) return <Loader/>
 
-        if(!isLoading && driverInfo?.data.approval_status !== "Accept"){
+        if(!isLoading && driverInfo?.data?.approval_status !== "Accept"){
             return <Navigate to="/unauthorized"/>
         }
         

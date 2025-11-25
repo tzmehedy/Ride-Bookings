@@ -107,7 +107,7 @@ export default function Navbar() {
                         </NavigationMenuItem>
                       )}
 
-                      {link.role === userInfo?.data.role && (
+                      {link.role === userInfo?.data?.role && (
                         <NavigationMenuItem key={index}>
                           <NavigationMenuLink
                             asChild
@@ -145,7 +145,7 @@ export default function Navbar() {
                       </NavigationMenuItem>
                     )}
 
-                    {link.role === userInfo?.data.role && (
+                    {link.role === userInfo?.data?.role && (
                       <NavigationMenuItem key={index}>
                         <NavigationMenuLink
                           asChild
@@ -164,7 +164,7 @@ export default function Navbar() {
         {/* Right side */}
         <div className="flex items-center gap-2">
           <ModeToggle />
-          {userInfo?.data.email ? (
+          {userInfo?.data?.email ? (
             <Button
               onClick={handelLogout}
               type="button"
