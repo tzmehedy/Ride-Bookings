@@ -3,6 +3,7 @@ import ManageUser from "@/pages/Dashboard/AdminPage/ManageUser";
 import ApproveDriver from "@/pages/Dashboard/AdminPage/ApproveDriver";
 import type { ISidebarItems } from "@/types";
 import ManageAllRidesForAdmin from "@/pages/Dashboard/AdminPage/ManageAllRidesForAdmin";
+import UpdateProfileInfo from "@/pages/Dashboard/AdminPage/UpdateProfileInfo";
 
 export const adminSideBarRoutes: ISidebarItems[] = [
   {
@@ -33,6 +34,16 @@ export const adminSideBarRoutes: ISidebarItems[] = [
         title: "Drivers Application",
         url: "/admin/drivers-application",
         component: ApproveDriver
+      },
+    ],
+  },
+  {
+    title: "Manage Profile",
+    items: [
+      {
+        title: "Update Profile",
+        url: "/admin/update-profile",
+        component: UpdateProfileInfo
       },
     ],
   },
