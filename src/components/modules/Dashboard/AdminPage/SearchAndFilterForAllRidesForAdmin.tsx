@@ -9,7 +9,7 @@ import { FcClearFilters } from "react-icons/fc";
 import Datepicker from "./Datepicker";
 
 
-export default function SearchAndFilterForAllRides() {
+export default function SearchAndFilterForAllRidesForAdmin() {
     const [searchParams, setSearchParams] = useSearchParams()
 
 
@@ -77,20 +77,6 @@ export default function SearchAndFilterForAllRides() {
                             <SelectItem value="Canceled">Canceled</SelectItem>
                         </SelectContent>
                     </Select>
-
-                </div>
-
-                <div>
-
-                    {/* <Select value={blockedStatus} onValueChange={(value) => handelIsBlockedFilter(value)}>
-                        <SelectTrigger className="w-[100%]">
-                            <SelectValue placeholder="Select" />
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectItem value="true">Blocked</SelectItem>
-                            <SelectItem value="false">Not Blocked</SelectItem>
-                        </SelectContent>
-                    </Select> */}
 
                 </div>
 

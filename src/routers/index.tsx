@@ -25,6 +25,7 @@ import MyRideHistory from "@/pages/Dashboard/RiderPage/MyRideHistory";
 import Fail from "@/pages/Payment/Fail";
 import Cancel from "@/pages/Payment/Cancel";
 import EarningHistory from "@/pages/Dashboard/DriverPage/EarningHistory";
+import Analytics from "@/pages/Dashboard/AdminPage/Analytics";
 
 
 
@@ -62,7 +63,10 @@ export const router = createBrowserRouter([
   {
     Component: withAuth(DashboardLayout, Role.ADMIN as TRole),
     path: "/admin",
-    children: [...generateRoutes(adminSideBarRoutes)],
+    children: [{
+      index: true,
+      Component: Analytics
+    }, ...generateRoutes(adminSideBarRoutes)],
   },
   {
     Component: withAuth(DashboardLayout, Role.RIDER as TRole),
@@ -84,7 +88,7 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: EarningHistory 
+        Component: EarningHistory
 
       }, ...generateRoutes([...driverSideBarRoutes]),
       {

@@ -22,14 +22,12 @@ export default function Datepicker() {
   const [searchParams, setSearchParams] = useSearchParams()
 
   useEffect(()=>{
-
     if(date){
       const params = new URLSearchParams(searchParams)
       params.set("date", date.toISOString())
       setSearchParams(params)
     }
-
-  }, [date, searchParams, setSearchParams])
+  }, [date,searchParams, setSearchParams])
 
 
   return (

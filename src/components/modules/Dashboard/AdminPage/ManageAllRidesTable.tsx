@@ -1,9 +1,9 @@
 import Loader from "@/components/layouts/Loader";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { cn } from "@/lib/utils";
-import { useGetAllRidesQuery } from "@/redux/features/admin/admin.api";
-import SearchAndFilterForAllRides from "./SearchAndFilterForAllRides";
+import { useGetAllRidesForAdminQuery } from "@/redux/features/admin/admin.api";
 import { useSearchParams } from "react-router";
+import SearchAndFilterForAllRidesForAdmin from "./SearchAndFilterForAllRidesForAdmin";
 
 
 
@@ -15,13 +15,15 @@ export default function ManageAllRidesTable() {
     const ride_status = searchParams.get("ride_status")
     const date = searchParams.get("date")
 
+    console.log(searchTerm)
+
     const query = {
         searchTerm,
         ride_status,
         date
     }
 
-    const { data, isLoading } = useGetAllRidesQuery(query)
+    const { data, isLoading } = useGetAllRidesForAdminQuery(query)
 
     const ridesInfo = data?.data
 
@@ -34,7 +36,7 @@ export default function ManageAllRidesTable() {
     return (
         <>
         <div>
-            <SearchAndFilterForAllRides/>
+            <SearchAndFilterForAllRidesForAdmin />
         </div>
             <Table className="">
                 <TableHeader>
@@ -71,8 +73,8 @@ export default function ManageAllRidesTable() {
 
                             <TableCell>{rideInfo.user.name}</TableCell>
                             <TableCell>{rideInfo.user.email}</TableCell>
-                            <TableCell>{rideInfo.driver.userId.name}</TableCell>
-                            <TableCell>{rideInfo.driver.userId.email}</TableCell>
+                            <TableCell>{rideInfo?.driver?.userId?.name}</TableCell>
+                            <TableCell>{rideInfo?.driver?.userId?.email}</TableCell>
 
                         </TableRow>
                     ))}
