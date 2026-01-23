@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { Link } from "react-router";
 import sideImgForLoginPage from "../../assets/images/LoginPageSideImg.jpg";
 import { LoginForm } from "@/components/modules/Authentication/LoginForm";
-import Logo from "@/assets/icons/Logo/Logo";
+import RideLogo from "@/assets/icons/logo/RideLogo";
 export default function Login({
   className,
   ...props
@@ -21,7 +21,7 @@ export default function Login({
                   <div className="m-3">
                     <div className="flex gap-3 justify-center items-center  top-3 left-3">
                       <Link to="/" className="flex">
-                        <Logo></Logo>
+                        <RideLogo/>
                       </Link>
                     </div>
                     <h1 className="text-primary text-xl font-bold text-center">

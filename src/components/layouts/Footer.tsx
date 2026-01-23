@@ -1,4 +1,4 @@
-import Logo from "@/assets/icons/Logo/Logo";
+import Logo from "@/assets/icons/logo/RideLogo";
 
 
 export default function Footer() {

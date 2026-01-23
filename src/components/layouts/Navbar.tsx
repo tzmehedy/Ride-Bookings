@@ -12,12 +12,12 @@ import {
 } from "@/components/ui/popover";
 import { Link, useNavigate } from "react-router";
 import { ModeToggle } from "./ModeToggler";
-import Logo from "@/assets/icons/Logo/Logo";
 import { authApi, useGetUserInfoQuery, useLogoutMutation } from "@/redux/features/auth/auth.api";
 import { Role } from "@/constants/role";
 import { toast } from "sonner";
 import { useAppDispatch } from "@/redux/hook";
 import Loader from "./Loader";
+import RideLogo from "@/assets/icons/logo/RideLogo";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
@@ -53,7 +53,7 @@ export default function Navbar() {
     }
   }
 
-  console.log(userInfo?.data?.role)
+ 
 
   
 
@@ -132,7 +132,7 @@ export default function Navbar() {
           {/* Main nav */}
           <div className="flex items-center gap-6">
             <Link to={"/"} className="text-primary hover:text-primary/90">
-              <Logo />
+              <RideLogo />
             </Link>
             {/* Navigation menu */}
 

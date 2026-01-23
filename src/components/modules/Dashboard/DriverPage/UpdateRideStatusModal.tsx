@@ -7,7 +7,6 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import type { Dispatch, SetStateAction } from "react"
-import Logo from "@/assets/icons/Logo/Logo"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { useForm } from "react-hook-form"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -17,6 +16,7 @@ import { driversApi, useUpdateRidesStatusMutation } from "@/redux/features/drive
 import { toast } from "sonner"
 import { useAppDispatch } from "@/redux/hook"
 import { ridesApi } from "@/redux/features/rides/rides.api"
+import RideLogo from "@/assets/icons/logo/RideLogo"
 
 interface IUpdateStatusModalProps{
   open: boolean,
@@ -68,7 +68,7 @@ export default function UpdateRideStatusModal({ open, setOpen, rideId }: IUpdate
             className="flex size-11 shrink-0 items-center justify-center rounded-full border"
             aria-hidden="true"
           >
-            <Logo/>
+           <RideLogo/>
           </div>
           <DialogHeader>
             <DialogTitle className="sm:text-center">

@@ -12,12 +12,12 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import Logo from "@/assets/icons/Logo/Logo"
 import { Link } from "react-router"
 import { useGetUserInfoQuery } from "@/redux/features/auth/auth.api"
 import { getSidebarItems } from "@/utilis/getsidebarItems"
 import { useGetDriverInfoQuery } from "@/redux/features/drivers/driver.api"
 import Loader from "./layouts/Loader"
+import RideLogo from "@/assets/icons/logo/RideLogo"
 
 // This is sample data.
 
@@ -39,7 +39,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar {...props}>
       <SidebarHeader>
         <Link to="/">
-          <Logo />
+          <RideLogo/>
         </Link>
       </SidebarHeader>
       <SidebarContent>

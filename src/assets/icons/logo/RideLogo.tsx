@@ -1,4 +1,4 @@
-export default function Logo() {
+export default function RideLogo() {
   return (
     <svg
       id="logo-38"
