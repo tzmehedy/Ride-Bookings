@@ -1,8 +1,14 @@
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
-import testimonial1 from "../../../assets/images/testimonial1.jpg"
-import testimonial2 from "../../../assets/images/testimonial2.jpg"
-import testimonial3 from "../../../assets/images/testimonial3.jpg"
+import testimonial1 from "../../../assets/images/testimonial1.jpg";
+import testimonial2 from "../../../assets/images/testimonial2.jpg";
+import testimonial3 from "../../../assets/images/testimonial3.jpg";
 import { Card, CardContent } from "@/components/ui/card";
 import { Quote } from "lucide-react";
 
@@ -20,10 +26,9 @@ export default function Testimonial() {
             Our Client's Review
           </h1>
           <p className="text-justify">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam
-            inventore sequi voluptates aliquam ad quia sint? Vel dolorem nisi
-            incidunt, tempora ullam culpa, mollitia ea doloremque molestiae odio
-            ex iure.
+            We’re trusted by riders who value accuracy, transparency, and
+            real-time updates. Here’s what our users say about their experience
+            with Ride-Sharing ETA.
           </p>
         </div>
 
@@ -37,16 +42,17 @@ export default function Testimonial() {
             <CarouselContent>
               <CarouselItem className="md:basis-1/2 lg:basis-1/3">
                 <div className="">
-                  <Card>
+                  <Card className="h-125">
                     <CardContent className="space-y-2">
                       <img className="rounded-xl" src={testimonial1} alt="" />
                       <div className="w-10 h-10 border-2 rounded-full flex items-center justify-center bg-muted relative -top-8 left-2">
                         <Quote className="text-primary"></Quote>
                       </div>
                       <p className="text-justify">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Alias earum possimus sint facere nulla veniam
-                        cupiditate in iusto error numquam.
+                        Ride-Sharing ETA makes waiting for a ride stress-free. I
+                        always know exactly when my driver will arrive, and the
+                        live tracking is incredibly accurate. It’s simple, fast,
+                        and reliable.
                       </p>
                       <h1 className="text-xl font-bold text-primary">
                         Mrs Maria
@@ -58,16 +64,16 @@ export default function Testimonial() {
               </CarouselItem>
               <CarouselItem className="md:basis-1/2 lg:basis-1/3">
                 <div className="">
-                  <Card>
+                  <Card className="h-125">
                     <CardContent className="space-y-2">
                       <img className="rounded-xl" src={testimonial2} alt="" />
                       <div className="w-10 h-10 border-2 rounded-full flex items-center justify-center bg-muted relative -top-8 left-2">
                         <Quote className="text-primary"></Quote>
                       </div>
                       <p className="text-justify">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Alias earum possimus sint facere nulla veniam
-                        cupiditate in iusto error numquam.
+                        The real-time ETA updates are spot on. I use this
+                        service regularly, and it helps me plan my time better —
+                        especially during busy hours. Highly recommended!
                       </p>
                       <h1 className="text-xl font-bold text-primary">
                         Mr John
@@ -79,38 +85,42 @@ export default function Testimonial() {
               </CarouselItem>
               <CarouselItem className="md:basis-1/2 lg:basis-1/3">
                 <div className="">
-                  <Card>
-                    <CardContent className="space-y-2">
+                  <Card className="h-125">
+                    <CardContent className="space-y-2 flex flex-col">
                       <img className="rounded-xl" src={testimonial3} alt="" />
                       <div className="w-10 h-10 border-2 rounded-full flex items-center justify-center bg-muted relative -top-8 left-2">
                         <Quote className="text-primary"></Quote>
                       </div>
-                      <p className="text-justify">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Alias earum possimus sint facere nulla veniam
-                        cupiditate in iusto error numquam.
+                      <p className="text-justify ">
+                        Sharing my ride ETA with family gives me peace of mind.
+                        The interface is clean, and the updates are smooth from
+                        booking to pickup.
                       </p>
-                      <h1 className="text-xl font-bold text-primary">
-                        Mr Madry
-                      </h1>
-                      <p className="text-muted-foreground">London,Uk</p>
+                      <div className="mt-6 space-y-2">
+                        <h1 className="text-xl font-bold text-primary">
+                          Mr Madry
+                        </h1>
+                        <p className="text-muted-foreground">London,Uk</p>
+                      </div>
                     </CardContent>
                   </Card>
                 </div>
               </CarouselItem>
               <CarouselItem className="md:basis-1/2 lg:basis-1/3">
                 <div className="">
-                  <Card>
+                  <Card className="h-125">
                     <CardContent className="space-y-2">
                       <img className="rounded-xl" src={testimonial1} alt="" />
                       <div className="w-10 h-10 border-2 rounded-full flex items-center justify-center bg-muted relative -top-8 left-2">
                         <Quote className="text-primary"></Quote>
                       </div>
                       <p className="text-justify">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Alias earum possimus sint facere nulla veniam
-                        cupiditate in iusto error numquam.
+                        Ride-Sharing ETA makes waiting for a ride stress-free. I
+                        always know exactly when my driver will arrive, and the
+                        live tracking is incredibly accurate. It’s simple, fast,
+                        and reliable.
                       </p>
+
                       <h1 className="text-xl font-bold text-primary">
                         Mrs Maria
                       </h1>

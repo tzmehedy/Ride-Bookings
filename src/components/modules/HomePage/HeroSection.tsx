@@ -7,7 +7,7 @@ export default function HeroSection() {
   return (
     <div
       style={{ backgroundImage: `url(${heroBackgroundImg})` }}
-      className="m-5 lg:m-0 rounded-xl bg-cover bg-no-repeat max-w-screen transition-all duration-300 bg-muted-foreground bg-blend-multiply"
+      className="m-5 lg:m-0 rounded-xl bg-cover bg-no-repeat max-w-screen transition-all duration-300   bg-blend-overlay"
     >
       <div className="flex flex-col md:flex-row justify-center items-center p-5 m-5">
         <div className="">
@@ -19,16 +19,13 @@ export default function HeroSection() {
         </div>
 
         <div className=" flex flex-col gap-5 animate-fade-in-right">
-          <h1 className="text-4xl font-bold text-foreground">
-            Understand user flow and
-            <strong className="text-primary"> increase </strong>
-            conversions
+          <h1 className="text-5xl font-bold text-primary">
+            Real-Time Ride ETA & Tracking <br />
+            <strong className="text-white text-3xl"> Know exactly when your ride will arrive — instantly. </strong>
           </h1>
 
-          <p className="text-background">
-            Whether you’re commuting to work, meeting friends, or exploring new
-            places, our service offers a smart, safe, and eco-friendly way to
-            get around.
+          <p className="text-white">
+           Track your driver’s location, get accurate estimated time of arrival (ETA), and stay informed from booking to drop-off.
           </p>
 
           <div className="flex space-x-3">

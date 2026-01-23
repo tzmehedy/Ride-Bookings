@@ -1,22 +1,20 @@
-
 import { Button } from "@/components/ui/button";
-import callToActionImage from "../../../assets/images/CallToActionImage.jpg"
+import callToActionImage from "../../../assets/images/CallToActionImage.jpg";
 
 export default function CallToAction() {
-  
   return (
     <section className="overflow-hidden bg-muted sm:grid sm:grid-cols-2 sm:items-center p-5 lg:p-0">
       <div className="p-8 md:p-12 lg:px-16 lg:py-24">
         <div className="mx-auto max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
           <h2 className="text-2xl font-bold text-muted-foreground md:text-3xl">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit
+            Reliable Rides, Right on Time
           </h2>
 
-          <p className="hidden text-muted-foreground/80 md:mt-4 md:block">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Et, egestas
-            tempus tellus etiam sed. Quam a scelerisque amet ullamcorper eu enim
-            et fermentum, augue. Aliquet amet volutpat quisque ut interdum
-            tincidunt duis.
+          <p className="hidden text-muted-foreground/80 md:mt-4 md:block text-justify">
+            Plan your journey with confidence using accurate, real-time ride tracking. Ride-Sharing ETA helps you know exactly when your driver will arrive, so you can save time, reduce waiting, and travel stress-free.
+          </p>
+          <p className="hidden text-muted-foreground/80 md:mt-4 md:block text-justify">
+            Get live ETA updates, track your driver on the map, and share your ride status with friends or family — all in one simple experience.
           </p>
 
           <div className="mt-4 md:mt-8">

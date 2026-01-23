@@ -13,9 +13,7 @@ export default function Services() {
           The Ultimate Taxi Service Experience Awaits
         </p>
         <p className="text-muted-foreground/80">
-          Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis{" "}
-          <br />
-          suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur
+         Ride Sharing ETA is a simple, intuitive tool that helps riders and <br />their contacts stay informed about ride arrival times. Our system calculates the estimated <br /> time for your ride to arrive and updates it in real time, <br /> so you can plan your journey with confidence.
         </p>
       </div>
 
@@ -27,8 +25,7 @@ export default function Services() {
           <div className="flex flex-col">
             <h1 className="text-xl font-bold ">Ride Sharing</h1>
             <p className="text-justify ">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Perferendis, ad.
+              Request a ride instantly and track your driver in real time. Get accurate ETA updates and clear ride details so you always know when your ride will arrive.
             </p>
           </div>
         </div>
@@ -39,8 +36,7 @@ export default function Services() {
           <div className="flex flex-col">
             <h1 className="text-xl font-bold ">Hourly Rent</h1>
             <p className="text-justify ">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Perferendis, ad.
+              Need a ride for multiple stops or a longer duration? Book a vehicle by the hour and enjoy flexible travel with live tracking and time-based updates.
             </p>
           </div>
         </div>
@@ -51,8 +47,7 @@ export default function Services() {
           <div className="flex flex-col">
             <h1 className="text-xl font-bold ">Ride Schedule</h1>
             <p className="text-justify ">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Perferendis, ad.
+              Plan ahead by scheduling your ride in advance. Set your pickup time, location, and destination — we’ll keep you updated with timely reminders and ETA updates.
             </p>
           </div>
         </div>

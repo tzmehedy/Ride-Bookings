@@ -17,9 +17,7 @@ export default function HowItWorks() {
       <div className="flex flex-col items-center mt-5 text-muted-foreground text-center space-y-5 ">
         <h1 className="text-3xl font-bold ">Simple Steps to Book Your Ride</h1>
         <p>
-          Neque porro quisquam est qui dolorem ipsum adipisci velit, sed quia{" "}
-          <br />
-          non numquam eius modi tempora incidunt ut labore et
+          Booking and tracking your ride is quick and hassle-free. Just follow <br /> a few easy steps to get real-time updates and accurate arrival <br /> information from start to finish.
         </p>
       </div>
 
@@ -31,48 +29,42 @@ export default function HowItWorks() {
         <div className="space-y-10 w-full md:w-2/3">
           <button
             onClick={() => setImageLink(img1)}
-            className="w-full text-start shadow-2xl p-3 cursor-pointer transition-all duration-100 rounded-lg border border-primary"
+            className="w-full text-start shadow-lg p-3 cursor-pointer transition-all duration-100 rounded-lg border border-primary"
           >
             <h1 className="text-primary font-bold">1. Type Your Destination</h1>
             <p className="mb-5">
-              Totam facilis laudantium cum accusamus ullam voluptatibus commodi{" "}
-              <br />
-              numquam, error, est. Ea, consequatur.
+              Enter your pickup and drop-off locations to start your ride request. Our system instantly maps the best route for your journey.
             </p>
           </button>
           <button
             onClick={() => setImageLink(img2)}
-            className="w-full text-start shadow-2xl p-3 cursor-pointer transition-all duration-100 rounded-lg border border-primary"
+            className="w-full text-start shadow-lg p-3 cursor-pointer transition-all duration-100 rounded-lg border border-primary"
           >
             <h1 className="text-primary font-bold">
               2. Confirm Pick-up Location
             </h1>
             <p className="mb-5">
-              Optio, neque qui velit. Magni dolorum quidem ipsam eligendi,{" "}
-              <br />
-              totam, facilis laudantium cum accusamus ullam voluptatibus
+              Check and confirm your exact pickup point on the map so your driver can find you easily without delays.
             </p>
           </button>
           <button
             onClick={() => setImageLink(img3)}
-            className="w-full text-start shadow-2xl p-3 cursor-pointer transition-all duration-100 rounded-lg border border-primary"
+            className="w-full text-start shadow-lg p-3 cursor-pointer transition-all duration-100 rounded-lg border border-primary"
           >
             <h1 className="text-primary font-bold">3. Choose Payment Method</h1>
             <p className="mb-5">
-              Facilis laudantium cum accusamus ullam voluptatibus commodi
-              numquam, error, est. Ea, consequatur.
+              Select your preferred payment option and review your ride details before confirming the request.
             </p>
           </button>
           <button
             onClick={() => setImageLink(img4)}
-            className="w-full text-start shadow-2xl p-3 cursor-pointer transition-all duration-100 rounded-lg border border-primary"
+            className="w-full text-start shadow-lg p-3 cursor-pointer transition-all duration-100 rounded-lg border border-primary"
           >
             <h1 className="text-primary font-bold">
               4. Driver On The Way To Pick-up
             </h1>
             <p className="mb-5">
-              Magni dolorum quidem ipsam eligendi, totam, facilis laudantium cum
-              accusamus ullam voluptatibus commodi numquam
+              Once your ride is confirmed, track your driver in real time and see the live ETA as they head toward your location.
             </p>
           </button>
         </div>
