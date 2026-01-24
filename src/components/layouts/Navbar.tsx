@@ -10,14 +10,13 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { Link, useNavigate } from "react-router";
+import { Link} from "react-router";
 import { ModeToggle } from "./ModeToggler";
-import { authApi, useGetUserInfoQuery, useLogoutMutation } from "@/redux/features/auth/auth.api";
+import { useGetUserInfoQuery } from "@/redux/features/auth/auth.api";
 import { Role } from "@/constants/role";
-import { toast } from "sonner";
-import { useAppDispatch } from "@/redux/hook";
 import Loader from "./Loader";
 import RideLogo from "@/assets/icons/logo/RideLogo";
+import { ProfileButton } from "./ProfileButton";
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
@@ -34,24 +33,11 @@ const navigationLinks = [
 
 export default function Navbar() {
   const { data: userInfo, isLoading } = useGetUserInfoQuery(undefined);
-  const [logOut] = useLogoutMutation()
-  const dispatch = useAppDispatch()
-  const navigate = useNavigate()
+  
 
   if (isLoading) <Loader />
 
-  const handelLogout = async () => {
-    try {
-      await logOut(undefined)
-      toast.success("Logout Successfully.")
-      dispatch(authApi.util.resetApiState())
-      navigate("/login")
-
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (error: any) {
-      toast.error(error.message)
-    }
-  }
+  
 
  
 
@@ -171,14 +157,15 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <ModeToggle />
           {userInfo?.data?.email ? (
-            <Button
-              onClick={handelLogout}
-              type="button"
-              className="cursor-pointer"
-              variant={"outline"}
-            >
-              Logout
-            </Button>
+            // <Button
+            //   onClick={handelLogout}
+            //   type="button"
+            //   className="cursor-pointer"
+            //   variant={"outline"}
+            // >
+            //   Logout
+            // </Button>
+            <ProfileButton userInfo={userInfo}/>
           ) : (
             <Link
               to="/login"
