@@ -1,6 +1,7 @@
 import CallToAction from "@/components/modules/HomePage/CallToAction";
 import HeroSection from "@/components/modules/HomePage/HeroSection";
 import HowItWorks from "@/components/modules/HomePage/HowItWorks";
+import Safety from "@/components/modules/HomePage/Safety";
 import Services from "@/components/modules/HomePage/Services";
 import Testimonial from "@/components/modules/HomePage/Testimonial";
 
@@ -10,6 +11,7 @@ export default function Home() {
       <HeroSection/>
       <HowItWorks/>
       <Services/>
+      <Safety/>
       <Testimonial/>
       <CallToAction/>
     </>
