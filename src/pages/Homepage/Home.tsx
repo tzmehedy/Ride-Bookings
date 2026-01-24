@@ -1,3 +1,4 @@
+import About from "@/components/modules/HomePage/About";
 import CallToAction from "@/components/modules/HomePage/CallToAction";
 import HeroSection from "@/components/modules/HomePage/HeroSection";
 import HowItWorks from "@/components/modules/HomePage/HowItWorks";
@@ -9,6 +10,7 @@ export default function Home() {
   return (
     <>
       <HeroSection/>
+      <About/>
       <HowItWorks/>
       <Services/>
       <Safety/>
