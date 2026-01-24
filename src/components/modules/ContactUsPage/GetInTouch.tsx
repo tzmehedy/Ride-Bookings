@@ -9,8 +9,7 @@ export default function GetInTouch() {
       <div className="lg:w-1/2 space-y-5">
         <h1 className="text-primary text-4xl font-bold">Get In Touch With Us</h1>
         <p>
-          Fugit sed quia consequuntur magni dolores eos qui ration nesciunt.
-          Excepteur sint occaecat cupidatat non proident sunt in qui.
+          Have a question or need assistance? Send us a message and our team will respond as quickly as possible to ensure you get the support you need.
         </p>
         <div className="flex flex-col md:flex-row gap-10">
           <div className=" space-y-2">

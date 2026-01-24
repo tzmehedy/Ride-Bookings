@@ -13,37 +13,37 @@ const items = [
   {
     id: "1",
     title: "Do you offer airport transportation services?",
-    content: "Yes we offer airport transportation services.",
+    content: "Yes, we provide reliable airport pickup and drop-off services. You can book instantly or schedule your ride in advance to ensure timely arrivals and departures.",
   },
   {
     id: "2",
     title: "How can I estimate the fare for my ride?",
     content:
-      "Use our CSS variables for global styling, or className and style props for component-specific changes. We support CSS modules, Tailwind, and dark mode out of the box.",
+      "Simply enter your pickup and destination locations in the app. You’ll receive an estimated fare upfront before confirming your booking—no hidden charges.",
   },
   {
     id: "3",
     title: "Can I schedule a ride in advance?",
     content:
-      "Yes, with tree-shaking, code splitting, and minimal runtime overhead. Most components are under 5KB gzipped.",
+      "Absolutely. Our ride scheduling feature allows you to book rides ahead of time for important meetings, events, or travel plans.",
   },
   {
     id: "4",
     title: "What are the payment options available?",
     content:
-      "All components follow WAI-ARIA standards, featuring proper ARIA attributes, keyboard navigation, and screen reader support. Regular testing ensures compatibility with NVDA, VoiceOver, and JAWS.",
+      "We support multiple secure payment methods, including credit/debit cards and digital wallets. Choose what’s most convenient for you.",
   },
   {
     id: "5",
     title: "How can I estimate the fare for my ride?",
     content:
-      "All components follow WAI-ARIA standards, featuring proper ARIA attributes, keyboard navigation, and screen reader support. Regular testing ensures compatibility with NVDA, VoiceOver, and JAWS.",
+      "Yes. Once your ride is confirmed, you can track your driver live on the map and view real-time ETA updates until arrival.",
   },
   {
     id: "6",
     title: "Are your drivers licensed and experienced?",
     content:
-      "All components follow WAI-ARIA standards, featuring proper ARIA attributes, keyboard navigation, and screen reader support. Regular testing ensures compatibility with NVDA, VoiceOver, and JAWS.",
+      "All drivers are carefully verified, licensed, and trained to ensure safety, professionalism, and a comfortable ride experience.",
   },
 ];
 
