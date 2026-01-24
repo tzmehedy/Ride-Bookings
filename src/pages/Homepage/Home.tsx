@@ -1,5 +1,6 @@
 import About from "@/components/modules/HomePage/About";
 import CallToAction from "@/components/modules/HomePage/CallToAction";
+import DriverInfo from "@/components/modules/HomePage/DriverInfo";
 import HeroSection from "@/components/modules/HomePage/HeroSection";
 import HowItWorks from "@/components/modules/HomePage/HowItWorks";
 import Safety from "@/components/modules/HomePage/Safety";
@@ -15,6 +16,7 @@ export default function Home() {
       <Services/>
       <Safety/>
       <Testimonial/>
+      <DriverInfo/>
       <CallToAction/>
     </>
   );
