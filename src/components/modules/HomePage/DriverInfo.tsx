@@ -68,20 +68,20 @@ export default function DriverInfo() {
       <div className="lg:w-1/2 bg-primary/30 p-10 rounded-lg">
         <div className="bg-white p-10 space-y-5 rounded-lg">
           <div className="text-center">
-            <h1 className="text-3xl font-bold">$1,250</h1>
+            <h1 className="text-3xl font-bold text-muted-foreground">$1,250</h1>
             <p className="text-muted-foreground">Average Weekly Earnings</p>
           </div>
 
           <div className="text-muted-foreground font-bold">
-            <div className="flex justify-between border-b py-2">
+            <div className="flex justify-between border-b border-muted-foreground py-2">
                 <h1>Base Fare</h1>
                 <p>$850</p>
             </div>
-            <div className="flex justify-between border-b py-2">
+            <div className="flex justify-between border-b border-muted-foreground py-2">
                 <h1>Tips</h1>
                 <p>$200</p>
             </div>
-            <div className="flex justify-between border-b py-2">
+            <div className="flex justify-between border-b border-muted-foreground py-2">
                 <h1>Bonuses</h1>
                 <p className="text-primary ">$200</p>
             </div>

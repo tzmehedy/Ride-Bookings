@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import callToActionImage from "../../../assets/images/CallToActionImage.jpg";
+import { Link } from "react-router";
 
 export default function CallToAction() {
   return (
@@ -11,16 +12,22 @@ export default function CallToAction() {
           </h2>
 
           <p className="hidden text-muted-foreground/80 md:mt-4 md:block text-justify">
-            Plan your journey with confidence using accurate, real-time ride tracking. Ride-Sharing ETA helps you know exactly when your driver will arrive, so you can save time, reduce waiting, and travel stress-free.
+            Plan your journey with confidence using accurate, real-time ride
+            tracking. Ride-Sharing ETA helps you know exactly when your driver
+            will arrive, so you can save time, reduce waiting, and travel
+            stress-free.
           </p>
           <p className="hidden text-muted-foreground/80 md:mt-4 md:block text-justify">
-            Get live ETA updates, track your driver on the map, and share your ride status with friends or family — all in one simple experience.
+            Get live ETA updates, track your driver on the map, and share your
+            ride status with friends or family — all in one simple experience.
           </p>
 
           <div className="mt-4 md:mt-8">
-            <Button className="rounded-sm bg-primary/90 px-12 py-3 flex justify-center items-center  font-medium text-white transition hover:bg-primary focus:ring-3 focus:ring-yellow-400 focus:outline-hidden cursor-pointer">
-              Get Started Today
-            </Button>
+            <Link to="/ride-request">
+              <Button className="rounded-sm bg-primary/90 px-12 py-3 flex justify-center items-center  font-medium text-white transition hover:bg-primary focus:ring-3 focus:ring-yellow-400 focus:outline-hidden cursor-pointer">
+                Get Started Today
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

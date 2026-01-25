@@ -1,7 +1,7 @@
-
 import { Button } from "@/components/ui/button";
-import heroBackgroundImg from "../../../assets/images/HeroBannerBackground.jpg"
-import heroLeftImage from "../../../assets/images/HeroLeft.png"
+import heroBackgroundImg from "../../../assets/images/HeroBannerBackground.jpg";
+import heroLeftImage from "../../../assets/images/HeroLeft.png";
+import { Link } from "react-router";
 
 export default function HeroSection() {
   return (
@@ -21,22 +21,30 @@ export default function HeroSection() {
         <div className=" flex flex-col gap-5 animate-fade-in-right">
           <h1 className="text-5xl font-bold text-primary">
             Real-Time Ride ETA & Tracking <br />
-            <strong className="text-white text-3xl"> Know exactly when your ride will arrive — instantly. </strong>
+            <strong className="text-white text-3xl">
+              {" "}
+              Know exactly when your ride will arrive — instantly.{" "}
+            </strong>
           </h1>
 
           <p className="text-white">
-           Track your driver’s location, get accurate estimated time of arrival (ETA), and stay informed from booking to drop-off.
+            Track your driver’s location, get accurate estimated time of arrival
+            (ETA), and stay informed from booking to drop-off.
           </p>
 
           <div className="flex space-x-3">
-            <Button className="cursor-pointer">Get Started</Button>
+            <Link to="/ride-request">
+              <Button className="cursor-pointer">Get Started</Button>
+            </Link>
 
-            <Button
-              className="cursor-pointer border border-primary"
-              variant="outline"
-            >
-              Read More
-            </Button>
+            <Link to="/about">
+              <Button
+                className="cursor-pointer border border-primary"
+                variant="outline"
+              >
+                Read More
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
