@@ -17,6 +17,7 @@ import { useRegisterMutation } from "@/redux/features/auth/auth.api";
 import { toast } from "sonner";
 import Password from "@/components/ui/Password";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Loader } from "lucide-react";
 
 
 
@@ -57,7 +58,7 @@ const registrationFormSchema = z
 
 export function RegisterForm() {
 
-  const [register] = useRegisterMutation()
+  const [register, {isLoading}] = useRegisterMutation()
   const navigate = useNavigate()
 
   const form = useForm<z.infer<typeof registrationFormSchema>>({
@@ -194,8 +195,10 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
-        <Button className="w-full" type="submit">
-          Register
+        <Button disabled={isLoading} className="w-full" type="submit">
+          {
+            isLoading ? <Loader className="animate-spin"/> :"Register"
+          }
         </Button>
       </form>
       <div className="text-center">

@@ -32,7 +32,7 @@ export const driverSideBarRoutes: ISidebarItems[] = [
         component: ApplicationStatus
       },
       {
-        title: "Update Profile",
+        title: "Profile",
         url: "/driver/update-profile",
         component: UpdateProfile
       },

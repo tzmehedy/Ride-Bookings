@@ -10,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useLoginMutation } from "@/redux/features/auth/auth.api";
 import { toast } from "sonner";
 import Password from "@/components/ui/Password";
+import { Loader, OctagonX } from "lucide-react";
 
 
 const loginFormSchema = z.object({
@@ -21,7 +22,7 @@ const loginFormSchema = z.object({
 
 
 export function LoginForm() {
-  const [login] = useLoginMutation()
+  const [login, {isLoading}] = useLoginMutation()
   const navigate = useNavigate()
 
     const form = useForm<z.infer<typeof loginFormSchema>>(
@@ -34,6 +35,19 @@ export function LoginForm() {
       }
     )
 
+    const handelDemoAdminLogin = () =>{
+      form.setValue("email", "touhidur15-13673@diu.edu.bd")
+      form.setValue("password", "Touhid@16")
+    }
+    const handelDemoDriverLogin = () =>{
+      form.setValue("email", "mehedytouhidurzaman@gmail.com")
+      form.setValue("password", "Mehedy@16")
+    }
+    const handelDemoRiderLogin = () =>{
+      form.setValue("email", "rahim@gmail.com")
+      form.setValue("password", "Rahim@16")
+    }
+
     const onSubmit = async(values: z.infer<typeof loginFormSchema>) => {
       const userInfo = {
         email: values.email,
@@ -41,7 +55,7 @@ export function LoginForm() {
       }
 
       try {
-        const result = await login(userInfo).unwrap()
+        const result = await login(userInfo).unwrap() 
 
         if(result.success){
           toast.success(result.message)
@@ -86,8 +100,10 @@ export function LoginForm() {
         />
         
         
-        <Button className="w-full" type="submit">
-          Login
+        <Button disabled={isLoading} className="w-full cursor-pointer" type="submit">
+          {
+            isLoading ? <Loader className="animate-spin"/> : "Login"
+          }
         </Button>
       </form>
       <div className="text-center">
@@ -95,6 +111,20 @@ export function LoginForm() {
           Don&apos;t have an account? Please <Link to="/register" className="underline text-primary font-bold">Register</Link>
         </p>
       </div>
+
+      <div className="border p-2 rounded-lg mt-5 space-y-3">
+        <h1 className="text-muted-foreground text-lg">Demo Login</h1>
+        <p className="flex gap-2 text-sm text-muted-foreground"><OctagonX className="text-destructive"/> Don't miss use it</p>
+
+        <div className="space-y-3">
+          <Button onClick={handelDemoAdminLogin} className="w-full bg-primary/40 cursor-pointer">Admin</Button>
+          <Button onClick={handelDemoDriverLogin} className="w-full bg-primary/40 cursor-pointer">Driver</Button>
+          <Button onClick={handelDemoRiderLogin} className="w-full bg-primary/40 cursor-pointer">Rider</Button>
+
+        </div>
+      </div>
     </Form>
+
+
   );
 }

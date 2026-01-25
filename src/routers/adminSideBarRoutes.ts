@@ -41,7 +41,7 @@ export const adminSideBarRoutes: ISidebarItems[] = [
     title: "Manage Profile",
     items: [
       {
-        title: "Update Profile",
+        title: "Profile",
         url: "/admin/update-profile",
         component: UpdateProfileInfo
       },

@@ -18,7 +18,7 @@ export const riderSideBarRoutes: ISidebarItems[] = [
     title: "Profile Management",
     items: [
       {
-        title: "Update Profile",
+        title: "Profile",
         url: "/rider/update-profile",
         component: UpdateProfile
       }
